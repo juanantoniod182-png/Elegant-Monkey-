@@ -152,13 +152,30 @@ header .titulo {
     color: black;
 }
 .logo {
-    width: 120px !important;
-    height: 120px !important;
+    width: 250px;
+    height: 250px;
     object-fit: cover;
-    border-radius: 70% !important;
+    border-radius: 70%;
     border: 2px solid gold;
     display: block;
     margin: 0 auto 10px;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .logo {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+    .logo {
+        width: 140px;
+        height: 140px;
+    }
+}
 }
 </style>
 
