@@ -3,319 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Segoe UI', Arial;
-    background: #f2f2f2;
-}
+body{margin:0;background:#fff;font-family:'Montserrat';}
 
 /* HEADER */
-header {
-    background: #0f0f0f;
-    color: #fff;
-    text-align: center;
-    padding: 25px;
-    font-size: 20px;
-    letter-spacing: 3px;
+header{
+background:#000;
+color:white;
+padding:35px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.logo{
+width:clamp(110px,14vw,170px);
+height:clamp(110px,14vw,170px);
+object-fit:cover;
+border-radius:50%;
+border:3px solid #d4af37;
+margin-bottom:15px;
+}
+
+h1{
+font-family:'Cinzel';
+color:#d4af37;
+font-size:clamp(20px,3vw,28px);
+letter-spacing:3px;
+text-align:center;
 }
 
 /* SECCIONES */
-.section {
-    text-align: center;
-    font-size: 18px;
-    margin: 30px 0 10px;
-    letter-spacing: 1px;
+.section{
+text-align:center;
+font-family:'Cinzel';
+margin:40px 0 10px;
+font-size:18px;
+}
+
+.section::after{
+content:"";
+width:90px;
+height:3px;
+background:#d4af37;
+display:block;
+margin:10px auto;
 }
 
 /* GRID */
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 25px;
-    padding: 0 20px 40px;
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+padding:20px;
 }
 
-/* TARJETAS */
-.card {
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    transition: 0.3s;
+/* CARD */
+.card{
+background:white;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+position:relative;
+transition:.3s;
+}
+.card:hover{transform:translateY(-5px);}
+
+/* SLIDER */
+.slider{position:relative;}
+
+.slider img{
+width:100%;
+height:260px;
+object-fit:cover;
+display:none;
+cursor:pointer;
 }
 
-.card:hover {
-    transform: translateY(-6px);
+.slider img.active{display:block;}
+
+.btn-slider{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.6);
+color:white;
+border:none;
+padding:6px 12px;
+cursor:pointer;
+border-radius:6px;
 }
 
-/* CARRUSEL */
-.slider {
-    position: relative;
+.prev{left:10px;}
+.next{right:10px;}
+
+/* ETIQUETAS */
+.hot{
+position:absolute;
+top:10px;
+left:10px;
+background:linear-gradient(45deg,#d4af37,#f7e7a1);
+color:black;
+padding:5px 10px;
+font-size:11px;
+font-weight:bold;
+border-radius:8px;
 }
 
-.slider img {
-    width: 100%;
-    height: 270px;
-    object-fit: cover;
-    display: none;
+.stock{
+font-size:12px;
+color:#d4af37;
+margin-top:5px;
 }
-
-.slider img.active {
-    display: block;
-}
-
-.btn-slider {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    cursor: pointer;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-.prev { left: 10px; }
-.next { right: 10px; }
 
 /* INFO */
-.info {
-    padding: 15px;
+.info{text-align:center;padding:15px;}
+.title{font-family:'Cinzel';font-size:15px;}
+.price{color:#c9a646;font-weight:bold;font-size:16px;}
+.tallas{font-size:13px;color:#555;margin-top:5px;}
+
+.btn{
+background:#000;
+color:white;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+transition:.3s;
+}
+.btn:hover{
+background:#d4af37;
+color:black;
 }
 
-.title {
-    font-size: 15px;
-    font-weight: 600;
+/* CARRITO */
+.cart{
+position:fixed;
+right:20px;
+top:20px;
+background:#000;
+color:white;
+padding:12px;
+border-radius:50%;
+cursor:pointer;
+z-index:1000;
 }
 
-.price {
-    font-size: 17px;
-    margin: 6px 0;
+.panel{
+position:fixed;
+right:-320px;
+top:0;
+width:300px;
+height:100%;
+background:white;
+border-left:2px solid #d4af37;
+padding:20px;
+transition:.3s;
+z-index:1000;
 }
 
-.details {
-    font-size: 13px;
-    color: #555;
+.panel.active{right:0;}
+
+.remove{color:red;cursor:pointer;}
+.close{cursor:pointer;font-size:20px;text-align:right;}
+
+/* MODAL ZOOM */
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
-.btn {
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-    padding: 10px;
-    background: #0f0f0f;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-}
-/* ===== ESTILO DORADO ===== */
-
-.logo {
-    width: 110px;
-    display: Center;
-    margin: 0 auto 10px;
-}
-    .logo-name {
-    color: white;          /* Color blanco */
-    font-style: italic;     /* Cursiva */
-    font-size: 18px;        /* Más pequeño que el título */
-    text-align: center;     /* Centrado debajo del logo */
-    margin-top: 5px;        /* Espacio entre logo y nombre */
-    font-family: 'Arial', sans-serif; /* Puedes cambiar la fuente */
-}
-header .titulo {
-    color: gold;
+.modal img{
+max-width:90%;
+max-height:85%;
+border-radius:10px;
 }
 
-/* Línea dorada en secciones */
-.section::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: gold;
-    margin: 8px auto 0;
+.closeModal{
+position:absolute;
+top:20px;
+right:30px;
+color:white;
+font-size:30px;
+cursor:pointer;
 }
 
-/* Precio dorado */
-.price {
-    color: #c9a646;
-    font-weight: 600;
+/* WHATS */
+.wsp{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25D366;
+padding:14px;
+border-radius:50%;
+color:white;
 }
-
-/* Botón elegante */
-.btn {
-    border: 1px solid gold;
-}
-
-/* Hover botón */
-.btn:hover {
-    background: gold;
-    color: black;
-}
-.logo {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
-    border-radius: 70%;
-    border: 2px solid gold;
-    display: block;
-    margin: 0 auto 10px;
-}
-
-/* Tablet */
-@media (max-width: 768px) {
-    .logo {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-/* Móvil */
-@media (max-width: 480px) {
-    .logo {
-        width: 140px;
-        height: 140px;
-    }
-}
-
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-   <img src="logo.webp" class="logo">
-    <p class=".logo-name">Elegant Monkey Shop</p>
-    <div class="titulo">CATALOGO DE ROPA</div>
+<img src="logo.webp" class="logo">
+<h1>ELEGANT MONKEY SHOP<br>CATÁLOGO DE ROPA</h1>
 </header>
-<!-- PLAYERAS NORMALES -->
+
 <div class="section">PLAYERAS</div>
-<div class="container">
+<div class="container" id="playeras"></div>
 
-<!-- 6 MODELOS -->
-<div class="card"><div class="slider">
-<img src="p1_11.webp" class="active"><img src="p1_2.webp"><img src="p1_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Playera Boss 1</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20playera%201" class="btn">Comprar</a></div></div>
+<div class="section">PLAYERAS DE PEDRERA</div>
+<div class="container" id="pedreria"></div>
 
-<div class="card"><div class="slider">
-<img src="p2_1.webp" class="active"><img src="p2_2.webp"><img src="p2_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Playera Psycho Bunny 2</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20playera%202" class="btn">Comprar</a></div></div>
-
-<div class="card"><div class="slider">
-<img src="p3_1.webp" class="active"><img src="p3_2.webp"><img src="p3_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Playera Calvin Klein 3</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20playera%203" class="btn">Comprar</a></div></div>
-
-<div class="card"><div class="slider">
-<img src="p4_1.webp" class="active"><img src="p4_2.webp"><img src="p4_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Playera Psycho Bunny 4</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20playera%204" class="btn">Comprar</a></div></div>
-
-<div class="card"><div class="slider">
-<img src="p5_1.webp" class="active"><img src="p5_2.webp"><img src="p5_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Playera Boss 5</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20playera%205" class="btn">Comprar</a></div></div>
-
-<div class="card"><div class="slider">
-<img src="p6_1.webp" class="active"><img src="p6_2.webp"><img src="p6_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Playera Boss 6</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20playera%206" class="btn">Comprar</a></div></div>
-
-</div>
-
-<!-- PEDRERÍA -->
-<div class="section">PLAYERAS PEDRERIA</div>
-<div class="container">
-
-<div class="card"><div class="slider">
-<img src="pd1_1.webp" class="active"><img src="pd1_2.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Hugo Pedreria 1</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20premium%201" class="btn">Comprar</a></div></div>
-
-<div class="card"><div class="slider">
-<img src="pd2_1.webp" class="active"><img src="pd2_2.webp"><img src="pd2_3.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Boss Pedreria 1</div><div class="price">$420</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20premium%201" class="btn">Comprar</a></div></div>
-
-
-</div>
-
-<!-- SHORTS -->
 <div class="section">SHORTS</div>
-<div class="container">
+<div class="container" id="shorts"></div>
 
-<div class="card"><div class="slider">
-<img src="s1_1.webp" class="active"><img src="s1_2.webp"><img src="s1_3.webp"><img src="s1_4.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Short Calvin Klein 1</div><div class="price">$480</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20short%201" class="btn">Comprar</a></div></div>
+<div class="cart" onclick="abrir()">🛒 <span id="count">0</span></div>
 
-<div class="card"><div class="slider">
-<img src="s2_1.webp" class="active"><img src="s2_2.webp"><img src="s2_3.webp"><img src="s2_4.webp"><img src="s2_5.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Short Calvin Klein 2</div><div class="price">$480</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20short%202" class="btn">Comprar</a></div></div>
+<div class="panel" id="panel">
+<div class="close" onclick="cerrar()">✖</div>
+<h3>Tu pedido</h3>
+<ul id="lista"></ul>
+<a id="enviar" target="_blank">Enviar pedido</a>
+</div>
 
-<div class="card"><div class="slider">
-<img src="s3_1.webp" class="active"><img src="s3_2.webp"><img src="s3_3.webp"><img src="s3_4.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Short Psycho Bunny 3</div><div class="price">$480</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20short%203" class="btn">Comprar</a></div></div>
+<a href="https://wa.me/5219381264237" class="wsp">💬</a>
 
-<div class="card"><div class="slider">
-<img src="s4_1.webp" class="active"><img src="s4_2.webp"><img src="s4_3.webp"><img src="s4_4.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Short Hugo 4</div><div class="price">$480</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20short%204" class="btn">Comprar</a></div></div>
-
-<div class="card"><div class="slider">
-<img src="s5_1.webp" class="active"><img src="s5_2.webp"><img src="s5_3.webp"><img src="s5_4.webp"><img src="s5_5.webp">
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button></div>
-<div class="info"><div class="title">Short Hugo 5</div><div class="price">$480</div><div class="details">S, M, L, XL</div>
-<a href="https://wa.me/5219381264237?text=Quiero%20short%205" class="btn">Comprar</a></div></div>
-
+<div class="modal" id="modal">
+<span class="closeModal" onclick="cerrarModal()">✖</span>
+<img id="imgModal">
 </div>
 
 <script>
-function moveSlide(btn, dir) {
-    const slider = btn.parentElement;
-    const images = slider.querySelectorAll("img");
-    let index = [...images].findIndex(img => img.classList.contains("active"));
-    images[index].classList.remove("active");
-    index = (index + dir + images.length) % images.length;
-    images[index].classList.add("active");
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+/* DETECTOR AUTOMÁTICO DE IMÁGENES */
+function detectarImagenes(prefijo,max=15){
+return new Promise(resolve=>{
+let imgs=[];
+let cargadas=0;
+
+for(let i=1;i<=max;i++){
+let img=new Image();
+img.src=`${prefijo}_${i}.webp`;
+
+img.onload=()=>{
+imgs.push(img.src);
+cargadas++;
+if(cargadas===max) resolve(imgs);
+};
+
+img.onerror=()=>{
+cargadas++;
+if(cargadas===max) resolve(imgs);
+};
 }
+});
+}
+
+/* CREAR PRODUCTO */
+async function crear(nombre,precio,prefijo,cont,i){
+let imgs=await detectarImagenes(prefijo);
+
+if(imgs.length===0) return;
+
+let hot = i<=3 ? '<div class="hot">HOT</div>' : '';
+let stock = i<=4 ? '<div class="stock">POCAS PIEZAS</div>' : '';
+
+let imagesHTML = imgs.map((img,index)=>`<img src="${img}" class="${index==0?'active':''}" onclick="zoom('${img}')">`).join("");
+
+document.getElementById(cont).innerHTML+=`
+<div class="card">
+${hot}
+<div class="slider">
+${imagesHTML}
+<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
+<button class="btn-slider next" onclick="moveSlide(this,1)">›</button>
+</div>
+<div class="info">
+<div class="title">${nombre}</div>
+<div class="price">$${precio}</div>
+<div class="tallas">Tallas: S, M, L, XL</div>
+${stock}
+<div class="btn" onclick="add('${nombre}')">Agregar</div>
+</div>
+</div>`;
+}
+
+/* GENERAR TODO AUTOMÁTICO */
+for(let i=1;i<=8;i++){
+crear("Playera Modelo "+i,420,`p${i}`,"playeras",i);
+}
+
+for(let i=1;i<=10;i++){
+crear("Premium "+i,420,`pd${i}`,"pedreria",i);
+}
+
+for(let i=1;i<=10;i++){
+crear("Short "+i,480,`s${i}`,"shorts",i);
+}
+
+/* SLIDER */
+function moveSlide(btn,dir){
+const slider = btn.parentElement;
+const images = slider.querySelectorAll("img");
+let index = [...images].findIndex(img=>img.classList.contains("active"));
+images[index].classList.remove("active");
+index=(index+dir+images.length)%images.length;
+images[index].classList.add("active");
+}
+
+/* CARRITO */
+function abrir(){panel.classList.add("active");}
+function cerrar(){panel.classList.remove("active");}
+
+function add(n){cart.push(n);guardar();}
+function remove(i){cart.splice(i,1);guardar();}
+
+function guardar(){
+localStorage.setItem("cart",JSON.stringify(cart));
+update();
+}
+
+function update(){
+lista.innerHTML="";
+cart.forEach((p,i)=>{
+lista.innerHTML+=`<li>${p} <span class="remove" onclick="remove(${i})">✖</span></li>`;
+});
+count.textContent=cart.length;
+
+let txt=encodeURIComponent("Hola quiero este pedido: "+cart.join(", "));
+enviar.href=`https://wa.me/5219381264237?text=${txt}`;
+}
+
+update();
+
+/* ZOOM */
+function zoom(src){
+modal.style.display="flex";
+imgModal.src=src;
+}
+
+function cerrarModal(){modal.style.display="none";}
+
+modal.addEventListener("click",(e)=>{
+if(e.target===modal) cerrarModal();
+});
 </script>
 
 </body>
