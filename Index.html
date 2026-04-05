@@ -248,7 +248,7 @@ color:white;
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 /* DETECTOR AUTOMÁTICO DE IMÁGENES */
-function detectarImagenes(prefijo,max=15){
+function detectarImagenes(prefijo,max=6){
 return new Promise(resolve=>{
 let imgs=[];
 let cargadas=0;
