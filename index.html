@@ -635,7 +635,7 @@ async function crear(tipo, precio, prefijo, cont, i, conTalla=true){
   let imgs=await detectarImagenes(prefijo);
   if(imgs.length===0)return;
 
-  const nombre = tipo;
+  const nombre = `${tipo} ${i}`;
   const hot = i<=3 ? '<div class="hot">🔥 HOT</div>' : '';
   const stock = i<=4 ? '<div class="stock">⚡ Pocas piezas disponibles</div>' : '';
 
@@ -667,7 +667,7 @@ async function crear(tipo, precio, prefijo, cont, i, conTalla=true){
       <button class="btn-slider next" onclick="moveSlide(this,1)">›</button>
     </div>
     <div class="info">
-      <div class="title">${tipo}</div>
+      <div class="title">${nombre}</div>
       <div class="price">$${precio} MXN</div>
       ${tallaHTML}
       ${stock}
