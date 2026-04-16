@@ -208,15 +208,6 @@ h1{
   text-align:center;
 }
 
-.brand{
-  font-size:11px;
-  color:#999;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-weight:500;
-  margin-bottom:4px;
-}
-
 .title{
   font-family:'Cinzel',serif;
   font-size:15px;
@@ -536,7 +527,6 @@ footer a{
   .price{font-size:16px;margin-bottom:8px;}
   .size-btn{width:32px;height:32px;font-size:11px;}
   .btn{padding:10px 16px;font-size:12px;}
-  .brand{font-size:10px;}
   .panel{width:100%;right:-100%;}
   .contact-bar{gap:16px;}
   .contact-bar a{font-size:12px;}
@@ -624,59 +614,28 @@ footer a{
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* ── BRAND NAMES ── */
-const marcasPlayeras = [
-  "Hugo Boss","Versace","Armani Exchange","Dolce & Gabbana","Kenzo",
-  "Philipp Plein","Givenchy","Burberry","Balenciaga","Fendi",
-  "Gucci","Prada","Moschino","Calvin Klein","Tommy Hilfiger",
-  "Ralph Lauren","Lacoste","Diesel","Valentino","Balmain",
-  "Off-White","Alexander McQueen","Stone Island","Moncler","Palm Angels"
-];
-
-const marcasPedreria = [
-  "Philipp Plein","Dolce & Gabbana","Versace","Balmain","Givenchy",
-  "Moschino","Kenzo","Valentino","Alexander McQueen","Roberto Cavalli",
-  "Swarovski Edition","Crystal Collection","Luxury Stone","Diamond Cut","Gold Thread",
-  "Platinum Series","Royal Edition","Crown Jewel","Star Crystal","Emerald Line",
-  "Pearl Drop","Ruby Set","Sapphire Touch","Onyx Edition","Amethyst Line"
-];
-
-const marcasShorts = [
-  "Hugo Boss","Versace","Armani Exchange","Dolce & Gabbana","Kenzo",
-  "Philipp Plein","Givenchy","Burberry","Balenciaga","Fendi",
-  "Gucci","Prada","Moschino","Calvin Klein","Tommy Hilfiger",
-  "Ralph Lauren","Lacoste","Diesel","Valentino","Balmain",
-  "Off-White","Alexander McQueen","Stone Island","Moncler","Palm Angels"
-];
-
-const marcasGorras = [
-  "Gucci","Louis Vuitton","Balenciaga","Versace","Burberry",
-  "Prada","Fendi","Givenchy","Kenzo","Armani Exchange",
-  "Ralph Lauren","Tommy Hilfiger","Calvin Klein","Hugo Boss","Lacoste",
-  "Nike","Adidas","New Era","Philipp Plein","Moschino",
-  "Valentino","Diesel","Stone Island","Off-White","Palm Angels"
-];
+/* ── (brands removed) ── */
 
 /* ── DETECT IMAGES ── */
 function detectarImagenes(prefijo, max=15){
   return new Promise(resolve=>{
-    let imgs=[], cargadas=0;
+    let results=new Array(max).fill(null), cargadas=0;
     for(let i=1;i<=max;i++){
       let img=new Image();
       img.src=`${prefijo}_${i}.webp`;
-      img.onload=()=>{imgs.push(img.src);check();};
+      img.onload=(function(idx,src){return function(){results[idx]=src;check();};})(i-1,img.src);
       img.onerror=()=>{check();};
-      function check(){cargadas++;if(cargadas===max)resolve(imgs);}
+      function check(){cargadas++;if(cargadas===max)resolve(results.filter(Boolean));}
     }
   });
 }
 
 /* ── CREATE CARD ── */
-async function crear(marca, tipo, precio, prefijo, cont, i, conTalla=true){
+async function crear(tipo, precio, prefijo, cont, i, conTalla=true){
   let imgs=await detectarImagenes(prefijo);
   if(imgs.length===0)return;
 
-  const nombre = `${tipo} ${marca}`;
+  const nombre = tipo;
   const hot = i<=3 ? '<div class="hot">🔥 HOT</div>' : '';
   const stock = i<=4 ? '<div class="stock">⚡ Pocas piezas disponibles</div>' : '';
 
@@ -708,7 +667,6 @@ async function crear(marca, tipo, precio, prefijo, cont, i, conTalla=true){
       <button class="btn-slider next" onclick="moveSlide(this,1)">›</button>
     </div>
     <div class="info">
-      <div class="brand">${marca}</div>
       <div class="title">${tipo}</div>
       <div class="price">$${precio} MXN</div>
       ${tallaHTML}
@@ -719,10 +677,21 @@ async function crear(marca, tipo, precio, prefijo, cont, i, conTalla=true){
 }
 
 /* ── GENERATE PRODUCTS ── */
-for(let i=1;i<=25;i++) crear(marcasPlayeras[i-1]||"Premium","Playera",420,`p${i}`,"playeras",i,true);
-for(let i=1;i<=25;i++) crear(marcasPedreria[i-1]||"Exclusive","Playera Pedrería",420,`pd${i}`,"pedreria",i,true);
-for(let i=1;i<=25;i++) crear(marcasShorts[i-1]||"Premium","Short",480,`s${i}`,"shorts",i,true);
-for(let i=1;i<=25;i++) crear(marcasGorras[i-1]||"Premium","Gorra",350,`g${i}`,"gorras",i,false);
+async function generarCatalogo(){
+  const secciones = [
+    {tipo:"Playera", precio:420, prefijo:"p", cont:"playeras", max:25, conTalla:true},
+    {tipo:"Playera de Pedrería", precio:420, prefijo:"pd", cont:"pedreria", max:25, conTalla:true},
+    {tipo:"Short", precio:480, prefijo:"s", cont:"shorts", max:25, conTalla:true},
+    {tipo:"Gorra", precio:350, prefijo:"g", cont:"gorras", max:25, conTalla:false}
+  ];
+
+  for(const sec of secciones){
+    for(let i=1;i<=sec.max;i++){
+      await crear(sec.tipo, sec.precio, `${sec.prefijo}${i}`, sec.cont, i, sec.conTalla);
+    }
+  }
+}
+generarCatalogo();
 
 /* ── SIZE SELECTOR ── */
 function selTalla(btn, cardId){
