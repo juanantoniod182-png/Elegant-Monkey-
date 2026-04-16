@@ -1,359 +1,359 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
-<cabeza>
+<head>
 <meta charset="UTF-8">
-<meta nombre="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<enlace HFE="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400&display=swap" REL="Hoja de estilo">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
-<Estilo>
-cuerpo{margen:0; Antecedentes:#fff; familia de fuentes:'Montserrat';}
+<style>
+body{margin:0;background:#fff;font-family:'Montserrat';}
 
-/* ENCABEZADO */
-encabezado{
-Antecedentes:#000;
-Color:Blanco;
-Acolchado:35px 20px;
-Pantalla:Flexión;
-Flexión-Dirección:columna;
-Align-Elementos:Centro;
+/* HEADER */
+header{
+background:#000;
+color:white;
+padding:35px 20px;
+display:flex;
+flex-direction:column;
+align-items:center;
 }
 
 .logo{
-Anchura:Abrazadera (110px, 14vw, 170px);
-Altura:Abrazadera (110px, 14vw, 170px);
-Objeto-Ajuste:Portada;
-frontera-Radio:50%;
-frontera:3px sólido #d4af37;
-Margen-Abajo:15px;
+width:clamp(110px,14vw,170px);
+height:clamp(110px,14vw,170px);
+object-fit:cover;
+border-radius:50%;
+border:3px solid #d4af37;
+margin-bottom:15px;
 }
 
 h1{
-familia de fuentes: 'Cinzel';
-color: #d4af37;
-Fuente-Tamaño:Abrazadera (20px, 3vw, 28px);
-espaciado entre letras: 3px;
+font-family:'Cinzel';
+color:#d4af37;
+font-size:clamp(20px,3vw,28px);
+letter-spacing:3px;
 text-align:center;
 }
 
 /* SECCIONES */
 .section{
-Texto-Align:Centro;
-familia de fuentes: 'Cinzel';
-margen: 40px 0 10px;
-tamaño de fuente:18px;
+text-align:center;
+font-family:'Cinzel';
+margin:40px 0 10px;
+font-size:18px;
 }
 
 .section::after{
-contenido:"";
-ancho:90px;
-altura: 3px;
-Antecedentes:#d4af37;
-Pantalla:Bloquear;
-Margen:10px automático;
+content:"";
+width:90px;
+height:3px;
+background:#d4af37;
+display:block;
+margin:10px auto;
 }
 
-/* CUADRÍCULA */
+/* GRID */
 .container{
-pantalla:cuadrija;
-Cuadrícula-columnas-plantilla:Repetir (ajuste automático,minmax(240px,1fr));
-Gap:20px;
-Acolchado:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+padding:20px;
 }
 
-/* CARTA */
+/* CARD */
 .card{
-Antecedentes:Blanco;
-Radio de frontera:14px;
-desbordamiento: oculto;
-sombra-caja:0 8px 20px rgba(0,0,0,0,08);
-posición: relativo;
-Transición:.3s;
+background:white;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+position:relative;
+transition:.3s;
 }
-.carta:hover{transform:translateY(-5px);}
+.card:hover{transform:translateY(-5px);}
 
 /* SLIDER */
-.slider{posición: relativo;}
+.slider{position:relative;}
 
 .slider img{
-ancho:100%;
-Altura:260 px;
-Ajuste de objetos:Portada;
-Pantalla:ninguno;
-cursor:puntero;
+width:100%;
+height:260px;
+object-fit:cover;
+display:none;
+cursor:pointer;
 }
 
 .slider img.active{display:block;}
 
 .btn-slider{
-posición: absoluta;
+position:absolute;
 top:50%;
-transformación:translateY(-50%);
-Antecedentes:RGBA(0,0,0,0,0,6);
-color: blanco;
-frontera: ninguna;
-acolchado: 6px 12px;
-cursor:puntero;
-frontera-Radio:6px;
+transform:translateY(-50%);
+background:rgba(0,0,0,0.6);
+color:white;
+border:none;
+padding:6px 12px;
+cursor:pointer;
+border-radius:6px;
 }
 
 .prev{left:10px;}
-.Siguiente{derecha:10px;}
+.next{right:10px;}
 
 /* ETIQUETAS */
 .hot{
-Posición:absoluto;
-arriba:10px;
-izquierda:10px;
-Antecedentes: lineal-pendiente (45º, #d4af37, #f7e7a1);
-Color:negro;
-Acolchado:5px 10px;
-Fuente-Tamaño:11px;
-Fuente-Peso:negrita;
-Radio de frontera:8px;
+position:absolute;
+top:10px;
+left:10px;
+background:linear-gradient(45deg,#d4af37,#f7e7a1);
+color:black;
+padding:5px 10px;
+font-size:11px;
+font-weight:bold;
+border-radius:8px;
 }
 
 .stock{
-tamaño-fuente:12px;
-Color:#d4af37;
-margen-arriba:5px;
+font-size:12px;
+color:#d4af37;
+margin-top:5px;
 }
 
 /* INFO */
-.info{texto-Align:centro; relleno:15px;}
-.título{font-family:'Cinzel'; font-size:15px;}
-.precio{color:#c9a646;font-weight:bold; font-size:16px;}
-.tallas{tamaño-fuente:13px; color: #555;margen-arriba:5px;}
+.info{text-align:center;padding:15px;}
+.title{font-family:'Cinzel';font-size:15px;}
+.price{color:#c9a646;font-weight:bold;font-size:16px;}
+.tallas{font-size:13px;color:#555;margin-top:5px;}
 
 .btn{
-antecedentes:#000;
-Color:blanco;
-Acolchado:10px;
-radio de frontera: 6px;
-cursor:puntero;
-margen arriba: 10px;
-transición: 0,3s;
+background:#000;
+color:white;
+padding:10px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+transition:.3s;
 }
 .btn:hover{
-Antecedentes:#d4af37;
-Color:negro;
+background:#d4af37;
+color:black;
 }
 
 /* 🛒 ICONO */
 .cart{
-posición: fija;
-derecha:20px;
-arriba:20px;
-Antecedentes:#000;
-Color:Blanco;
-relleno: 14px;
-radio de frontera: 50%;
-cursor:apuntador;
-z-Índice:1000;
-Caja-sombra:0 5px 15px rgba(0,0,0,0.2);
+position:fixed;
+right:20px;
+top:20px;
+background:#000;
+color:white;
+padding:14px;
+border-radius:50%;
+cursor:pointer;
+z-index:1000;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
 }
 
 /* 🔥 NUEVO CARRITO ELEGANTE */
 .panel{
-Posición:Fijado;
-derecha:-350px;
+position:fixed;
+right:-350px;
 top:20px;
-ancho:300px;
-Altura máxima:85vh;
-Antecedentes:Blanco;
-Radio de frontera:20px;
-Sombra de caja:0 20px 50px RGBA0,0,0,0.25);
-acolchado: 20px;
-transición: .4s cúbico-bézier(.77,0,.18,1);
-Z-índice:1000;
-pantalla:flex;
-dirección flexible:columna;
+width:300px;
+max-height:85vh;
+background:white;
+border-radius:20px;
+box-shadow:0 20px 50px rgba(0,0,0,0.25);
+padding:20px;
+transition:.4s cubic-bezier(.77,0,.18,1);
+z-index:1000;
+display:flex;
+flex-direction:column;
 }
 
-.panel.active{derecha:20px;}
+.panel.active{right:20px;}
 
 .panel h3{
-Margen-arriba:0;
-Fuente-Familia:'Cinzel';
-color: #d4af37;
+margin-top:0;
+font-family:'Cinzel';
+color:#d4af37;
 }
 
 /* lista scroll */
 #lista{
-desbordamiento-y:Auto;
-Max-Altura:300px;
-Acolchado:0;
+overflow-y:auto;
+max-height:300px;
+padding:0;
 }
 
-/* objetos */
+/* items */
 #lista li{
-Estilo de lista: ninguno;
-acolchado: 8px 0;
-frontera-abajo:1px sólido #eee;
-tamaño de fuente:14px;
+list-style:none;
+padding:8px 0;
+border-bottom:1px solid #eee;
+font-size:14px;
 }
 
 /* eliminar */
 .remove{
-Color:rojo;
-cursor:puntero;
-margen-izquierda:8px;
+color:red;
+cursor:pointer;
+margin-left:8px;
 }
 
 /* cerrar */
 .close{
-Posición:absoluto;
-arriba:10px;
-Derecha:15px;
-tamaño de fuente:22px;
-cursor:apuntador;
+position:absolute;
+top:10px;
+right:15px;
+font-size:22px;
+cursor:pointer;
 }
 
 /* boton enviar */
 #enviar{
-margen-arriba:Auto;
-Antecedentes:#25D366;
-Acolchado:12px;
+margin-top:auto;
+background:#25D366;
+padding:12px;
 text-align:center;
-radio de frontera: 10px;
-Decoración de texto: ninguna;
-Color:Blanco;
-Peso de fuente:negrita;
+border-radius:10px;
+text-decoration:none;
+color:white;
+font-weight:bold;
 }
 
-/* ZOOM MODAL */
+/* MODAL ZOOM */
 .modal{
-display:ninguno;
-posición: fija;
-arriba:0;
-izquierda:0;
-Anchura:100%;
-altura: 100%;
-antecedentes: RGBA (0,0,0,0,85);
-justificar-Contenido:Centro;
-Elementos-alineados:Centro;
-z-Índice:999;
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.85);
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
 .modal img{
-Ancho máximo:90%;
-Max-Altura:85%;
-frontera-Radio:10px;
+max-width:90%;
+max-height:85%;
+border-radius:10px;
 }
 
 .closeModal{
-Posición:absoluto;
-arriba:20px;
-Derecha:30px;
-Color:Blanco;
-fuente-Tamaño:30px;
-cursor:puntero;
+position:absolute;
+top:20px;
+right:30px;
+color:white;
+font-size:30px;
+cursor:pointer;
 }
 
-/* ¿QUÉ PASA? */
+/* WHATS */
 .wsp{
-Posición:arreglado;
-Abajo:20px;
-izquierda:20px;
-Antecedentes:#25D366;
-Acolchado:14px;
-Radio de frontera:50%;
-Color:Blanco;
+position:fixed;
+bottom:20px;
+left:20px;
+background:#25D366;
+padding:14px;
+border-radius:50%;
+color:white;
 }
-</estilo>
-</cabeza>
+</style>
+</head>
 
-<cuerpo>
+<body>
 
-<cabecera>
+<header>
 <img src="logo.webp" class="logo">
 <h1>ELEGANT MONKEY SHOP<br>CATÁLOGO DE ROPA</h1>
-</encabezado>
+</header>
 
 <div class="section">PLAYERAS</div>
-< class="contenedor" id="playeras"></div>
+<div class="container" id="playeras"></div>
 
-<div class="section">PLAYERAS DE PEDRERIA</div>
+<div class="section">PLAYERAS DE PEDRERA</div>
 <div class="container" id="pedreria"></div>
 
-< clase="section">SHORTS</div>
-<div class="contenedor" id="shorts"></div>
+<div class="section">SHORTS</div>
+<div class="container" id="shorts"></div>
 
-<div class="cart" onclick="abrir()"> 🛒 <span id="count">0</span></div>
+<div class="cart" onclick="abrir()">🛒 <span id="count">0</span></div>
 
-< clase="panel" id="panel">
+<div class="panel" id="panel">
 <div class="close" onclick="cerrar()">✖</div>
 <h3>Tu pedido</h3>
 <ul id="lista"></ul>
 <a id="enviar" target="_blank">Enviar pedido</a>
 </div>
 
-<a href="https:wa.me/5219381264237" class="wsp">💬</a>
+<a href="https://wa.me/5219381264237" class="wsp">💬</a>
 
 <div class="modal" id="modal">
 <span class="closeModal" onclick="cerrarModal()">✖</span>
 <img id="imgModal">
 </div>
 
-<guion>
+<script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 /* DETECTOR */
 function detectarImagenes(prefijo,max=15){
 return new Promise(resolve=>{
-Sea IMGS=[]; Sea cargadas=0;
-para(Sea i=1; i<=max; i++){
-sea img=nueva Imagen();
-img.src='${prefijo}_${i}.webp';
-IMG.onload=()=>{imgs.push(IMG.src); check();}
+let imgs=[]; let cargadas=0;
+for(let i=1;i<=max;i++){
+let img=new Image();
+img.src=`${prefijo}_${i}.webp`;
+img.onload=()=>{imgs.push(img.src);check();}
 img.onerror=()=>{check();}
-comprobación de función(){cargadas++; si(cargadas===max) resolve(imgs);}
+function check(){cargadas++; if(cargadas===max) resolve(imgs);}
 }
 });
 }
 
 /* CREAR */
 async function crear(nombre,precio,prefijo,cont,i){
-Sea imgs=await detectarImagenes(prefijo);
-si(IMGS.longitud===0) Regreso;
+let imgs=await detectarImagenes(prefijo);
+if(imgs.length===0) return;
 
-Que caliente = i<=3 ? '<div class="hot">HOT</div>' : '';
-Sea stock = i<=4 ? '<div class="stock">POCAS PIEZAS</div>' : '';
+let hot = i<=3 ? '<div class="hot">HOT</div>' : '';
+let stock = i<=4 ? '<div class="stock">POCAS PIEZAS</div>' : '';
 
-sea imagesHTML = imgs.map((img,índice)=>
-'<img src="${img}" class="${index==0?' activo':''}" onclick="zoom('${img}')">`
-).únete("");
+let imagesHTML = imgs.map((img,index)=>
+`<img src="${img}" class="${index==0?'active':''}" onclick="zoom('${img}')">`
+).join("");
 
-document.getElementById(cont).innerHTML+='
+document.getElementById(cont).innerHTML+=`
 <div class="card">
 ${hot}
 <div class="slider">
-${imágenesHTML}
-<button class="btn-slider prev" onclick="moveSlide(esto,-1)">‹</botón>
+${imagesHTML}
+<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
 <button class="btn-slider next" onclick="moveSlide(this,1)">›</button>
 </div>
 <div class="info">
 <div class="title">${nombre}</div>
-< clase="precio">$${precio}</div>
+<div class="price">$${precio}</div>
 <div class="tallas">Tallas: S, M, L, XL</div>
 ${stock}
-< clase="BTN" onclick="add('${nombre}')">Agregar</div>
+<div class="btn" onclick="add('${nombre}')">Agregar</div>
 </div>
-</div>';
+</div>`;
 }
 
 /* GENERAR */
-para (sea i=1; i<=25; i++) crear("Playera Modelo "+i,420,'p${i}',"playeras", i);
-para (sea i=1;i<=25; i++) crear("Pedreria "+i,420,'pd${i}',"pedreria",i);
-para (sea i=1;i<=25; i++) crear("Short "+i,480,'s${i}',"shorts",i);
+for(let i=1;i<=20;i++) crear("Playera Modelo "+i,420,`p${i}`,"playeras",i);
+for(let i=1;i<=20;i++) crear("Premium "+i,420,`pd${i}`,"pedreria",i);
+for(let i=1;i<=20;i++) crear("Short "+i,480,`s${i}`,"shorts",i);
 
 /* SLIDER */
-función moveSlide(btn,dir){
-slider const=btn.parentElement;
+function moveSlide(btn,dir){
+const slider=btn.parentElement;
 const images=slider.querySelectorAll("img");
-Sea index=[... imágenes].findIndex(img=>img.classList.contains("active"));
-imágenes[index].classList.remove("active");
-índice=(índice+dir+imágenes.longitud)%imágenes.longitud;
+let index=[...images].findIndex(img=>img.classList.contains("active"));
+images[index].classList.remove("active");
+index=(index+dir+images.length)%images.length;
 images[index].classList.add("active");
 }
 
@@ -361,1187 +361,34 @@ images[index].classList.add("active");
 function abrir(){panel.classList.add("active");}
 function cerrar(){panel.classList.remove("active");}
 
-función add(n){cart.push(n);Guardar();}
-función remove(i){cart.splice(i,1);Guardar();}
+function add(n){cart.push(n);guardar();}
+function remove(i){cart.splice(i,1);guardar();}
 
-función guardar(){
+function guardar(){
 localStorage.setItem("cart",JSON.stringify(cart));
-actualización();
+update();
 }
 
 function update(){
 lista.innerHTML="";
 cart.forEach((p,i)=>{
-lista.innerHTML+='<li>${p} <span class="remove" onclick="remove(${i})">✖</span></li>';
+lista.innerHTML+=`<li>${p} <span class="remove" onclick="remove(${i})">✖</span></li>`;
 });
 count.textContent=cart.length;
 
 let txt=encodeURIComponent("Hola quiero este pedido: "+cart.join(", "));
-enviar.href='https://wa.me/5219381264237?Texto=${txt}';
+enviar.href=`https://wa.me/5219381264237?text=${txt}`;
 }
-actualización();
+update();
 
 /* ZOOM */
-función zoom (SRC){
+function zoom(src){
 modal.style.display="flex";
 imgModal.src=src;
 }
 function cerrarModal(){modal.style.display="none";}
 modal.addEventListener("click",(e)=>{if(e.target===modal) cerrarModal();});
-</guion>
+</script>
 
-</cuerpo>
-</HTML>
-<! DOCTYPE html>
-<html lang="es">
-<cabeza>
-<meta charset="UTF-8">
-<meta nombre="viewport" content="width=device-width, initial-scale=1.0">
-<título>Elegante Tienda de Monos — Catálogo Premium</título>
-<Meta Nombre="Descripción" Contenido="Elegant Monkey Shop — Catálogo exclusivo de ropa y accesorios de marcas premium. Playeras, shorts y gorras con estilo dandy.">
-
-<enlace href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="hoja de estilo">
-
-<estilo>
-*{margen:0; acolchado:0; tamaño de caja:caja de borde;}
-
-:root{
- --oro:#c9a84c;
- --luz dorada:#e8d48b;
- --dorado-oscuro:#a07c1c;
-  --negro:#0d0d0d;
-  --carbón vegetal:#1a1a1a;
- --oscuro:#111;
- --crema:#faf8f3;
- --blanco-cálido:#f5f2ec;
- --texto:#2c2c2c;
- --luz de texto:#777;
-  --frontera:#e8e4dc;
-  --card-bg:#ffffff;
- --sombra-sm:0 2px 12px rgba(0,0,0,0,04);
-  --Shadow-MD:0 8px 30px rgba(0,0,0,0,07);
- --shadow-lg:0 16px 50px rgba(0,0,0,0,1);
- --radio:12px;
- --transición: todos .35s cúbicos-bézier(.4,0,.2,1);
-}
-
-html{scroll-Comportamiento:suave;}
-
-body{
- antecedentes:var(--crema);
- familia de fuentes: 'Montserrat', sans-serif;
- color:var(--texto);
- -suavizado-font-webkit: antialiasado;
- desbordamiento-x:oculto;
-}
-
-::selection{
- antecedentes: var(--oro);
- color:var(--negro);
-}
-
-/* ── PATRONES ORNAMENTALES ── */
-.ornamento{
- Pantalla:Flexión;
- Elementos-alineados:Centro;
- Justificar-contenido:Centro;
- Diferencia: 16 px;
- acolchado: 6px 0;
- opacidad:0,35;
-}
-.envergadura de ornamento{
- Fuente-Familia:'Cormorant Garamond',Serif;
- tamaño de fuente:18px;
- Color:var(--dorado-oscuro);
- espaciado entre letras: 6px;
-}
-.ornament-line{
- ancho:60px;
- Altura:1px;
- Antecedentes:Gradiente lineal (90grados, transparente, var(--dorado-oscuro), transparente);
-}
-
-/* ── CABECERA HEROICA ── */
-.héroe{
- antecedentes: var(--negro);
- Color:Blanco;
-  text-align:center;
- acolchado:0;
-  posición: relativo;
- desbordamiento: oculto;
-}
-
-.héroe::antes{
- Contenido:"";
- Posición:absoluto;
- arriba:0;izquierda:0; correcto:0; Bottom:0;
- Antecedentes:
- gradiente lineal repetitivo(
- 45º,
- transparente,
- transparente 40px,
- RGBA (201,168,76,0.015) 40px,
- RGBA (201,168,76,0.015) 41px
-    );
- Eventos puntuales:ninguno;
-}
-
-.hero-inner{
- Posición:relativo;
-  z-Índice:1;
- acolchado: 52px 24px 44px;
-}
-
-.Insignia de héroe{
- pantalla: flexión en línea;
- alinear-ítems:centro;
- Diferencia: 8px;
- Antecedentes:RGBA (201,168,76,0.1);
- frontera:1px RGB sólido(201,168,76,0.2);
- Acolchado:6px 20px;
- frontera-radio:30px;
- tamaño de fuente:10px;
- Peso de fuente:500;
- Carta-Espaciamiento:3px;
- Texto-transformar:Mayúsculas;
- Color:var(--luz dorada);
- margen inferior: 28 px;
-}
-
-.logo{
- Anchura:Clamp (90px, 12vw, 130px);
- Altura:Clamp (90px, 12vw, 130px);
- objeto-ajuste:cubrir;
- radio de frontera: 50%;
- borde:2px sólido var(--oro);
- Caja-sombra:
-    0 0 0 6px rgba(201,168,76,0.08),
-    0 0 40px rgba(201,168,76,0.15);
-  margen-Abajo:24px;
- transición:var(--transición);
-}
-
-.logo:hover{
- Sombra de caja:
- 0 0 0 8px rgba(201,168,76,0,12),
- 0 0 60px rgba(201,168,76,0,25);
-}
-
-h1{
- Familia de fuentes:'Playfair Display', serif;
- Color:Blanco;
- tamaño de fuente:Abrazadera (22px, 3,5 Vw, 36 px);
- peso-fuente: 700;
- espaciado entre letras:8px;
- margen inferior:8px;
-}
-
-h1 em{
- Color:var(--oro);
- Estilo de fuente:cursiva;
- Peso de fuente:500;
-}
-
-.eslogan{
- Fuente-Familia:'Cormorant Garamond', serifa;
- Fuente-Tamaño:abrazadera(13px,1.8vw, 17px);
- color: RGBA (255,255,255,0,45);
- espaciado entre letras:5px;
- transformación de texto: mayúsculas;
- peso-fuente: 300;
- Estilo de fuente:cursiva;
-}
-
-.hero-divider{
- Anchura:80px;
- Altura:1px;
- Antecedentes:Gradiente lineal (90grados, transparente, var(--oro), transparente);
- Margen:20px Auto 0;
-}
-
-/* ── CONTACTA CON BAR ── */
-.contact-bar{
- Antecedentes:var(--carbón);
- pantalla:flex;
- justificar-contenido:centro;
- Elementos-alineados:Centro;
- Diferencia: 32 px;
- Acolchado: 14px 20px;
- Flexión-Wrap:Wrap;
- frontera-Abajo:1px RGB sólido(201,168,76,0,15);
-}
-
-.contact-bar a{
- color: RGBA (255,255,255,0,6);
- Decoración de texto: ninguna;
- Fuente-Tamaño:12px;
- Fuente-Peso:400;
- Pantalla:Flexión;
- alinear-ítems:centro;
- Diferencia: 8px;
- transición:var(--transición);
- espaciado entre letras: 1px;
-}
-
-.contacto-Barra a:hover{
- Color:var(--oro);
-}
-
-.touch-bar .separator{
- ancho:1px;
- Altura:14px;
- Antecedentes:rgba(255,255,255,0,12);
-}
-
-/* ── PANCARTA INTRODUCTORIA ── */
-.intro{
-  text-align:center;
- Acolchado:50px 24px 10px;
- Ancho máximo:700px;
- Margen:0 automático;
-}
-
-.intro h3{
- familia de fuentes: 'Playfair Display', serif;
- Tamaño-fuente:clamp(16px,2.2vw,2px);
- peso-fuente: 500;
- Color:var(--texto);
- margen-fondo:12px;
- Espaciado entre letras:1px;
-}
-
-.intro p{
- tamaño de fuente:13px;
- Color:var(--luz-texto);
- altura de línea: 1,8;
- peso-fuente: 300;
-}
-
-/* ── SECCIONES ── */
-.section-header{
-  text-align:Centro;
- Acolchado:56px 20px 16px;
- Posición:relativo;
-}
-
-.sección-header .section-label{
- Pantalla:Bloque en línea;
- Fuente-Tamaño:10px;
- peso-fuente: 500;
- espaciado entre letras: 4px;
- transformación de texto: mayúsculas;
- Color:var(--dorado-oscuro);
- Margen-Abajo:10px;
- Fuente-Familia:'Montserrat', sans-serif;
-}
-
-.Cabecera de sección H2{
- Familia de fuentes:'Playfair Display', serif;
- tamaño de fuente:Clamp(20px,3vw,30px);
- Espaciado entre letras:4px;
-  Color:var(--carbón);
-  fuente-Peso:700;
- Posición:relativo;
- pantalla: bloque en línea;
- relleno-abajo: 16px;
-}
-
-.encabezado de sección h2::después{
- Contenido:"";
- Posición:absoluto;
- Abajo:0;izquierda:50%; transform:translateX(-50%);
- Anchura:40px;altura: 2px;
- Antecedentes:var(--oro);
- Radio de frontera:2px;
-}
-
-.encabezado de sección p{
- familia tipográfica: 'Cormorant Garamond', serif;
- tamaño-fuente:15px;
- color:var(--luz-texto);
- margen arriba: 12px;
- peso-fuente: 400;
- tipo-estilo: cursiva;
- espaciado entre letras: 1px;
-}
-
-/* ── GRID ── */
-.container{
- pantalla:cuadrija;
- cuadrícula-plantillas-columnas:repetir (auto-relleno,minmax(280px,1fr));
- Diferencia: 28 px;
- acolchado: 24px abrazadera (20px, 4vw, 60px);
- Ancho máximo: 1440px;
- marje:0 auto;
-}
-
-/* ── CARTA ── */
-.card{
- antecedentes: var(--card-bg);
- radio de borde: var(--radio);
- desbordamiento: oculto;
- sombra-caja:var(--sombra-sm);
- posición: relativo;
- Transición:var(--transición);
- borde:1px RGB sólido(0,0,0,0,04);
-}
-
-.card:hover{
- transformación:translateY(-4px);
- sombra-caja:var(--sombra-lg);
- color del borde: RGBA (201,168,76,0,12);
-}
-
-/* ── SLIDER ── */
-.deslizador{
- posición: relativo;
- desbordamiento:oculto;
- Antecedentes:VAR(--blanco-cálido);
-}
-
-.deslizador IMG{
- Ancho: 100%;
- Altura: 320px;
- objeto-ajuste:cubrir;
-  display:none;
- cursor:apuntador;
- transición: opacidad .4s facilidad, transformación 0.6s facilidad;
-}
-
-.deslizador img.active{display:block;}
-.slider:hover img.active{transform:scale(1.03);}
-
-.btn-slider{
- Posición:absoluto;
-  top:50%;
- transformar:translateY(-50%);
- Antecedentes:RGBA(255,255,255,0.9);
- fondo-filtro:desenfoque(8px);
- color: var(--carbón);
- frontera: ninguna;
- ancho:36px; Altura: 36px;
- cursor:apuntador;
- radio de frontera: 50%;
- tamaño-fuente:16px;
- transición:var(--transición);
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- opacidad:0;
- sombra de caja:0 2px 10px rgba(0,0,0,0,1);
-}
-
-.card:hover .BTN-deslizador{opacidad:1;}
-.btn-slider:hover{Background:var(--gold); color:white;}
-.prev{left:12px;}
-.next{right:12px;}
-
-/* ── PUNTOS IMAGEN ── */
-.slider-dots{
- posición:absoluto;
- Abajo: 12px;
- izquierda:50%;
-  transform:translateX(-50%);
- pantalla:flex;
- Diferencia: 6px;
-  z-index:2;
-}
-
-.slider-dot{
- ancho:6px;altura: 6px;
- radio de frontera: 50%;
- antecedentes: RGBA (255,255,255,0,5);
- transición:var(--transición);
-}
-
-.slider-dot.active{
- Antecedentes: Blanco;
- ancho: 18px;
- Radio de frontera: 3px;
-}
-
-/* ── INSIGNIAS ── */
-.hot{
- posición: absoluta;
- Arriba: 14 px; izquierda: 14 px;
- antecedentes: var(--oro);
-  color:var(--negro);
- Acolchado: 5px 14px;
- Tamaño-fuente:10px;
- Peso-fuente:600;
- radio de frontera: 4px;
- Espaciado entre letras:2px;
-  Texto-transformación: mayúscula;
-  z-index:2;
- Sombra de caja:0 2px 12px rgba(201,168,76,0.35);
-}
-
-.stock{
- Tamaño-fuente:11px;
- color: var(--dorado-oscuro);
- margen arriba: 8px;
- Peso-fuente:400;
- Espaciado entre letras:0.5px;
- tipo-estilo: cursiva;
-}
-
-/* ── INFO ── */
-.info{
- acolchado: 20px 22px 24px;
-  text-align:center;
-}
-
-.title{
- familia de fuentes: 'Playfair Display', serif;
- tamaño-fuente:15px;
- peso-fuente: 600;
- color: var(--carbón);
- margen-fondo:4px;
- espaciado entre letras: 1px;
-}
-
-.product-type{
- tamaño-fuente:10px;
- color:var(--luz-texto);
- transformación de texto: mayúsculas;
- espaciado entre letras: 2px;
- peso-fuente: 400;
- margen inferior:10px;
-}
-
-.price{
- color: var(--carbón);
- familia de fuentes: 'Playfair Display', serif;
- peso-fuente: 700;
- tamaño de fuente:22px;
- margen inferior:16px;
- espaciado entre letras: 1px;
-}
-
-.price .currency{
- tamaño de fuente:13px;
- peso-fuente: 400;
- color:var(--luz-texto);
- margen-izquierda:2px;
-}
-
-/* ── SELECTOR DE TALLAS ── */
-.size-selector{
- pantalla:flex;
- justificar-contenido:centro;
- Diferencia: 6px;
- margen inferior:16px;
- Envoltura flexible: envolviente;
-}
-
-.size-btn{
- ancho:40px; Altura: 40px;
- borde: 1,5px sólido var(--borde);
- Antecedentes: Transparente;
- radio de frontera: 6px;
- tamaño-fuente:11px;
- peso-fuente: 500;
- cursor:apuntador;
- transición:var(--transición);
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- color:var(--luz-texto);
- espaciado entre letras: 0,5px;
-}
-
-.size-btn:hover{
- color del borde: var(--dorado);
- color: var(--dorado-oscuro);
-}
-
-.size-btn.selected{
- antecedentes: var(--carbón);
- color: blanco;
- color del borde: var(--carbón);
-}
-
-.multitalla-tag{
- pantalla: bloque en línea;
- antecedentes:var(--blanco-cálido);
- color:var(--luz-texto);
- acolchado: 7px 18px;
- radio de frontera: 4px;
- tamaño-fuente:10px;
- peso-fuente: 500;
- espaciado entre letras: 2px;
- transformación de texto: mayúsculas;
- margen inferior:16px;
- borde:1px sólido var(--borde);
-}
-
-/* ── BOTÓN AÑADIR ── */
-.btn{
- antecedentes: var(--carbón);
- color: blanco;
- acolchado: 13px 28px;
- radio de frontera: 6px;
- cursor:apuntador;
- tamaño-fuente:11px;
- peso-fuente: 500;
- espaciado entre letras: 2px;
- transformación de texto: mayúsculas;
- transición:var(--transición);
- frontera: ninguna;
- pantalla: bloque en línea;
- posición: relativo;
- desbordamiento: oculto;
-}
-
-.btn::before{
- contenido:"";
- posición: absoluta;
- Top:0; izquierda:-100%;
- ancho:100%; altura: 100%;
- Antecedentes: Gradiente lineal (90grados, transparente, RGBA (255,255,255,0,1), transparente);
- transición: 0,5 s izquierdo;
-}
-
-.btn:hover::before{left:100%;}
-
-.btn:hover{
- antecedentes: var(--oro);
- color:var(--negro);
-}
-
-/* ── ICONO DE CARRITO ── */
-.cart-icon{
- posición: fija;
- derecha:24px;
- Arriba: 24 px;
- antecedentes: var(--carbón);
- color: blanco;
- ancho:50px; Altura: 50px;
- radio de frontera: 50%;
- cursor:apuntador;
- Z-index:1001;
- Box-shadow:0 4px 20px rgba(0,0,0,0,2);
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- tamaño de fuente:18px;
- transición:var(--transición);
- borde:1px RGB sólido(255,255,255,0,08);
-}
-
-.cart-icon:hover{
- antecedentes: var(--oro);
- color del borde: var(--dorado);
-}
-
-.cart-badge{
- posición: absoluta;
- top:-3px; derecha:-3px;
- antecedentes: var(--oro);
- color:var(--negro);
- tamaño-fuente:10px;
- peso-fuente: 700;
- ancho: 20px; Altura: 20px;
- radio de frontera: 50%;
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- espaciado entre letras: 0;
-}
-
-/* ── PANEL CARRITO ── */
-.panel{
- posición: fija;
- derecha:-400px;
- Top:0;
- ancho:380px;
- Altura: 100VH;
- antecedentes: blanco;
- sombra-caja:-4px 0 40px rgba(0,0,0,0,08);
- acolchado: 36px 28px 28px;
- transición: Bézier cúbico a la derecha .4s(.77,0,0,.18,1);
-  z-index:1002;
- pantalla:flex;
- dirección-flexible:columna;
-}
-
-.panel.active{right:0;}
-
-.panel-header{
- margen en el fondo: 24 px;
- acolchado-inferior: 20px;
- borde-fondo: 1px sólido var(--borde);
-}
-
-.panel h3{
- familia de fuentes: 'Playfair Display', serif;
- color: var(--carbón);
- tamaño-fuente:20px;
- espaciado entre letras: 2px;
- peso-fuente: 600;
-}
-
-.panel h3 small{
- pantalla:bloqueo;
- familia de fuentes: 'Montserrat', sans-serif;
- tamaño-fuente:10px;
- color:var(--luz-texto);
- espaciado entre letras: 3px;
- transformación de texto: mayúsculas;
- peso-fuente: 400;
- margen-arriba: 4px;
-}
-
-#lista{
-  overflow-y:auto;
-  flex:1;
- acolchado:0;
- Estilo de lista: ninguno;
-}
-
-#lista li{
- acolchado: 14px 0;
- borde-fondo: 1px RGB sólido(0,0,0,0,04);
- tamaño de fuente:13px;
- pantalla:flex;
- justificar-contenido:espacio-entre;
- alinear-ítems:centro;
- color:var(--texto);
-}
-
-.remove{
- color: #ccc;
- cursor:apuntador;
- tamaño-fuente:14px;
- transición:var(--transición);
-  flex-shrink:0;
- margen-izquierda:12px;
- ancho:28px; Altura: 28 px;
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- radio de frontera: 50%;
- antecedentes:var(--blanco-cálido);
-}
-
-.remove:hover{
- color: #e74c3c;
- antecedentes: RGBA (231,76,60,0,08);
-}
-
-.close-panel{
- posición: absoluta;
- Arriba: 24 px; derecha:24px;
- tamaño-fuente:20px;
- cursor:apuntador;
- color: #bbb;
- transición:var(--transición);
- antecedentes: ninguno;
- frontera: ninguna;
- ancho:36px; Altura: 36px;
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- radio de frontera: 50%;
-}
-
-.close-panel:hover{
- color:var(--texto);
- antecedentes:var(--blanco-cálido);
-}
-
-#enviar{
- Margen arriba: 18 px;
- Antecedentes:#25D366;
- acolchado: 15px;
-  text-align:center;
- radio de frontera: 8px;
- Decoración de texto: ninguna;
- color: blanco;
- peso-fuente: 600;
- tamaño-fuente:12px;
- espaciado entre letras: 2px;
- transformación de texto: mayúsculas;
- transición:var(--transición);
- pantalla:bloqueo;
-}
-
-#enviar:hover{background:#1da851;}
-
-.cartucho vacío{
-  text-align:center;
- color: #ccc;
- tamaño de fuente:13px;
- relleno: 50px 0;
- tipo-estilo: cursiva;
-}
-
-/* ── SUPERPOSICIÓN ── */
-.overlay{
- display:ninguno;
- posición: fija;
- Top:0; izquierda:0; correcto:0; Bottom:0;
- antecedentes: RGBA (0,0,0,0,35);
- fondo-filtro: desenfoque (2px);
- Z-index:1001;
- transición:opacidad .3s;
-}
-
-.overlay.active{display:block;}
-
-/* ── ZOOM MODAL ── */
-.modal{
- display:ninguno;
- posición: fija;
- Top:0; izquierda:0;
- ancho:100%; altura: 100%;
- antecedentes: RGBA (0,0,0,0,92);
- fondo-filtro: desenfoque (10px);
- justificar-contenido:centro;
- alinear-ítems:centro;
- Z-Index:2000;
-}
-
-.modal img{
- ancho máximo:90%;
- altura máxima: 85%;
- radio de borde: var(--radio);
- box-shadow:0 20px 80px rgba(0,0,0,0,0.5);
-}
-
-.closeModal{
- posición: absoluta;
- Arriba: 24 px; derecha:32px;
- color: RGBA (255,255,255,0,6);
- tamaño-fuente:28px;
- cursor:apuntador;
- antecedentes: ninguno; frontera: ninguna;
- transición:var(--transición);
- ancho:44px; Altura: 44 px;
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- radio de frontera: 50%;
-}
-
-.closeModal:hover{
- color: blanco;
- antecedentes: RGBA (255,255,255,0.1);
-}
-
-/* ── BOTONES FLOTANTES ── */
-.float-btns{
- posición: fija;
- abajo: 28 px;
- izquierda: 28 px;
- pantalla:flex;
- dirección-flexible:columna;
- Diferencia: 10px;
- Z-índice:1000;
-}
-
-.float-btn{
- ancho:52px; Altura: 52px;
- radio de frontera: 50%;
- pantalla:flex;
- alinear-ítems:centro;
- justificar-contenido:centro;
- tamaño de fuente:22px;
- Decoración de texto: ninguna;
- color: blanco;
- Box-shadow:0 4px 20px rgba(0,0,0,0,15);
- transición:var(--transición);
-}
-
-.float-btn:hover{
- transformar:translateY(-3px);
- Box-shadow:0 8px 25px RGB (0,0,0,0,0,25);
-}
-
-.float-wsp{fondo:#25D366;}
-.float-call{fondo:var(--carbón);}
-
-/* ── PIE DE PÁGINA ── */
-footer{
- antecedentes: var(--negro);
- color: RGBA (255,255,255,0,4);
-  text-align:center;
- acolchado: 48px 24px 36px;
- Margen arriba: 80px;
- posición: relativo;
- desbordamiento: oculto;
-}
-
-pie de página::antes{
- contenido:"";
- posición: absoluta;
- Top:0; izquierda:0; correcto:0;
- altura: 1px;
- Antecedentes: Gradiente lineal (90grados, transparente, var(--oro), transparente);
- opacidad:0,3;
-}
-
-.footer-logo{
- ancho:60px;
- Altura: 60px;
- objeto-ajuste:cubrir;
- radio de frontera: 50%;
- borde:1px RGB sólido(201,168,76,0,3);
- margen inferior:16px;
- opacidad:0,8;
-}
-
-.footer-brand{
- familia de fuentes: 'Playfair Display', serif;
- color: RGBA (255,255,255,0,7);
- tamaño-fuente:16px;
- espaciado entre letras:5px;
- margen inferior:8px;
- peso-fuente: 500;
-}
-
-.footer-tagline{
- familia tipográfica: 'Cormorant Garamond', serif;
- tamaño de fuente:13px;
- color: RGBA (255,255,255,0,25);
- espaciado entre letras: 3px;
- tipo-estilo: cursiva;
- margen-fondo:20px;
-}
-
-footer .footer-links{
- margen-fondo:20px;
-}
-
-footer .footer-links a{
- color: var(--dorado);
- Decoración de texto: ninguna;
- tamaño-fuente:12px;
- espaciado entre letras: 1px;
- opacidad:0,7;
- transición:var(--transición);
-}
-
-footer .footer-links a:hover{opacity:1;}
-
-pie de página .copyright{
- tamaño-fuente:10px;
- espaciado entre letras: 2px;
- transformación de texto: mayúsculas;
- color: RGBA (255,255,255,0,2);
- margen arriba: 20px;
-}
-
-/* ── FUNDIDO EN ANIMACIÓN ── */
-@keyframes fadeUp{
- de{opacidad:0; transform:translateY(20px);}
- a{opacidad:1; transform:translateY(0);}
-}
-
-.card{
- animación: FadeUp 0,5s facilitando ambos;
-}
-
-/* ── RECEPTIVO ── */
-@media(max-width:768px){
-  .container{
- plantilla-cuadrícula-columnas:repetir(2,1fr);
- Diferencia: 14 px;
- relleno: 14px;
-  }
-  .slider img{height:200px;}
-  .info{padding:14px 12px 18px;}
-  .title{font-size:13px;}
- .producto-tipo{font-size:9px; margen-inferior:6px;}
- .price{font-size:18px; margen-bottom:10px;}
- .size-btn{ancho:34px; Altura: 34px; font-size:10px;}
- .btn{relleno:11px 18px; tamaño-fuente:10px; Espaciado entre letras:1,5px;}
- .panel{width:100%; correcto:-100%;}
-  .contact-bar{gap:16px;}
-  .contact-bar a{font-size:11px;}
-  .section-header{padding:44px 16px 12px;}
- .hero-inner{relleno:40px 20px 36px;}
- h1{espaciado entre letras:4px;}
- .intro{relleno:36px 20px 8px;}
- .btn-slider{opacidad:1;}
-}
-
-@media(max-width:380px){
- .container{gap:10px; relleno:10px;}
- .slider img{Height:170px;}
-  .info{padding:10px 8px 14px;}
-  .title{font-size:12px;}
-  .price{font-size:16px;}
-}
-</estilo>
-</cabeza>
-
-<cuerpo>
-
-<!-- CABEZAZO DE HÉROE -->
-<encabezado clase="hero">
- <clase div="hero-inner">
- <div class="hero-badge">Colección Exclusiva 2026</div>
- <img src="logo.webp" class="logo" alt="Elegante Monkey Shop">
- <h1>ELEGANTE <em>Mono</em> TIENDA</h1>
- <div class="eslogan">La elección del caballero Dandy</div>
-    <div class="hero-divider"></div>
-  </div>
-</encabezado>
-
-<div class="contact-bar">
-  <a href="tel:+529381264237">&#9742; 938 126 4237</a>
-  <div class="separator"></div>
-  <a href="https://wa.me/5219381264237" target="_blank">WhatsApp Directo</a>
-</div>
-
-<!-- INTRODUCCIÓN -->
-<div class="intro">
-  <h3>Estilo que define a quien lo lleva</h3>
- <p>Cada pieza de nuestra colección ha sido seleccionada para quienes entienden que la elegancia no es lo que usas, sino como lo usas. Descubre prendas con carácter propio.</p>
-</div>
-
-<!-- PLAYERAS -->
-<div class="encabezado de sección">
-  <div class="section-label">Coleccion</div>
-  <h2>PLAYERAS</h2>
-  <p>Piezas esenciales con corte y actitud premium</p>
-</div>
-<div class="container" id="playeras"></div>
-
-<!-- PEDRERIA -->
-<div class="encabezado de sección">
-  <div class="section-label">Exclusivo</div>
-  <h2>PLAYERAS DE PEDRERIA</h2>
-  <p>Disenos artesanales que hacen la diferencia</p>
-</div>
-<div class="container" id="pedreria"></div>
-
-<!-- CORTOS -->
-<div class="encabezado de sección">
-  <div class="section-label">Temporada</div>
- <H2>SHORTS</H2>
-  <p>Comodidad sofisticada para el caballero moderno</p>
-</div>
-<div class="contenedor" id="shorts"></div>
-
-<!-- GORRAS -->
-<div class="encabezado de sección">
-  <div class="section-label">Accesorios</div>
-  <h2>GORRAS</h2>
-  <p>El detalle final que completa el look</p>
-</div>
-<div class="container" id="gorras"></div>
-
-<!-- ICONO DE CARTUCHOS --->
-<button class="cart-icon" onclick="abrirPanel()">
-  &#128722;
-  <span class="cart-badge" id="count">0</span>
-</botón>
-
-<!-- SUPERPOSICIÓN -->
-<div class="overlay" id="overlay" onclick="cerrarPanel()"></div>
-
-<!-- PANEL CARRITO -->
-<div class="panel" id="panel">
- <button class="close-panel" onclick="cerrarPanel()">&#10005; </botón>
-  <div class="panel-header">
-    <h3>Tu Seleccion<small>Resumen del pedido</small></h3>
-  </div>
-  <ul id="lista"></ul>
-  <div class="empty-cart" id="emptyMsg">Aun no has seleccionado prendas</div>
-  <a id="enviar" target="_blank">Enviar Pedido por WhatsApp</a>
-</div>
-
-<!-- BOTONES FLOTANTES -->
-<div class="float-btns">
- <a href="https://wa.me/5219381264237" clase="float-btn float-wsp" target="_blank" title="WhatsApp">&#128172; </a>
- <a href="tel:+529381264237" class="float-btn float-call" title="Llamar">&#9742; </a>
-</div>
-
-<!-- MODAL ZOOM -->
-<div class="modal" id="modal">
- <button class="closeModal" onclick="cerrarModal()">&#10005; </botón>
-  <img id="imgModal" alt="Zoom">
-</div>
-
-<pies de pie>
-  <img src="logo.webp" class="footer-logo" alt="Elegant Monkey Shop">
-  <div class="footer-brand">ELEGANT MONKEY SHOP</div>
-  <div class="footer-tagline">The Dandy Gentleman's Choice</div>
-  <div class="footer-links">
- <a href="tel:+529381264237">&#9742; 938 126 4237</a> &nbsp; & middot; &nbsp;
-    <a href="https://wa.me/5219381264237" target="_blank">WhatsApp</a>
-  </div>
- <div class="copyright">&copy; 2026 Elegante Monkey Shop & mdash; Todos los derechos reservados</div>
-</pie de página>
-
-<guion>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-/* ── DETECTAR IMÁGENES ── */
-function detectarImagenes(prefijo, max=15){
-  return new Promise(resolve=>{
- lets results=new Array(max).fill(null), cargadas=0;
- para (sea i=1; i<=max; i++){
- sea img=nueva Imagen();
- img.src='${prefijo}_${i}.webp';
- img.onload=(function(idx,src){return function(){results[idx]=src; check();};})(i-1, img.src);
-      img.onerror=()=>{check();};
- comprobación de función(){cargadas++; if(cargadas===max)resolve(results.filter(Boolean));}
-    }
-  });
-}
-
-/* ── CREAR TARJETA ── */
-función async crear(tipo, precio, prefijo, cont, i, conTalla=true){
- sea imgs=await detectarImagenes(prefijo);
- si(imgs.longitud===0)retorno;
-
- const nombre = '${tipo} ${i}';
-  const hot = i<=3 ? '<div class="hot">Destacado</div>' : '';
- Stock const = i<=4 ? '<div class="stock">Últimas piezas disponibles</div>' : '';
-
-  const imagesHTML = imgs.map((img,index)=>
- '<img src="${img}" clase="${index===0?' active':''}" onclick="zoom('${img}')" alt="${nombre}">'
- ).unirse("");
-
- const dotsHTML = imgs.length > 1 ? '<div class="slider-dots">${imgs.map((_,index)=>
- '<div class="slider-dot${index===0?' activo':''}"></div>'
- ).join("")}</div>' : '';
-
- const cardId = 'card-${cont}-${i}';
-
-  let tallaHTML;
-  if(conTalla){
- tallaHTML = '
-      <div class="size-selector" id="sizes-${cardId}">
-        <button class="size-btn" onclick="selTalla(this,'${cardId}')">S</button>
-        <button class="size-btn" onclick="selTalla(this,'${cardId}')">M</button>
- <class button="size-btn" onclick="selTalla(this,'${cardId}')">L</button>
-        <button class="size-btn" onclick="selTalla(this,'${cardId}')">XL</button>
- </div>';
-  } else {
- tallaHTML = '<div class="multitalla-tag">Talla Unica</div>';
-  }
-
- retardo de const = (i - 1) * 0,06;
-
- document.getElementById(cont).innerHTML+='
-  <div class="card" id="${cardId}" style="animation-delay:${delay}s">
-    ${hot}
-    <div class="slider">
- ${imágenesHTML}
-      ${dotsHTML}
- <button class="btn-slider prev" onclick="moveSlide(this,-1)">&#8249; </botón>
- <button class="btn-slider next" onclick="moveSlide(this,1)">&#8250; </botón>
-    </div>
-    <div class="info">
-      <div class="title">${nombre}</div>
-      <div class="product-type">${tipo}</div>
-      <div class="price">$${precio} <span class="currency">MXN</span></div>
-      ${tallaHTML}
-      ${stock}
-      <button class="btn" onclick="add('${nombre.replace(/'/g,"\\'")}','${cardId}',${conTalla})">Agregar al Pedido</button>
-    </div>
- </div>';
-}
-
-/* ── GENERAR PRODUCTOS ── */
-async function generarCatalogo(){
- Const secciones = [
-    {tipo:"Playera", precio:420, prefijo:"p", cont:"playeras", max:25, conTalla:true},
-    {tipo:"Playera de Pedreria", precio:420, prefijo:"pd", cont:"pedreria", max:25, conTalla:true},
-    {tipo:"Short", precio:480, prefijo:"s", cont:"shorts", max:25, conTalla:true},
-    {tipo:"Gorra", precio:350, prefijo:"g", cont:"gorras", max:25, conTalla:false}
-  ];
-
- for(const sec of sectiones){
- para (sea i=1; i<=sec.max; i++){
- await crear(sec.tipo, sec.precio, '${sec.prefijo}${i}', sec.cont, i, sec.conTalla);
-    }
-  }
-}
-generarCatalogo();
-
-/* ── SELECTOR DE TALLAS ── */
-function selTalla(btn, cardId){
- const contenedor = btn.parentElement;
-  container.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('selected'));
-  btn.classList.add('selected');
-}
-
-/* ── SLIDER ── */
-función moveSlide(btn,dir){
- control deslizante const=btn.parentElement;
-  const images=slider.querySelectorAll("img");
-  const dots=slider.querySelectorAll(".slider-dot");
- Sea index=[... imágenes].findIndex(img=>img.classList.contains("active"));
- imágenes[index].classList.remove("active");
-  if(dots.length) dots[index].classList.remove("active");
- índice=(índice+dir+imágenes.longitud)%imágenes.longitud;
-  images[index].classList.add("active");
-  if(dots.length) dots[index].classList.add("active");
-}
-
-/* ── CARRITO ── */
-function abrirPanel(){
- panel.classList.add("activo");
- overlay.classList.add("activo");
-}
-function cerrarPanel(){
-  panel.classList.remove("active");
-  overlay.classList.remove("active");
-}
-
-function add(nombre, cardId, conTalla){
-  if(conTalla){
- const sel = document.querySelector('#sizes-${cardId} .size-btn.selected');
-    if(!sel){
-      alert("Por favor selecciona una talla antes de agregar.");
- regresar;
-    }
-    const talla = sel.textContent;
- cart.push('${nombre} - Talla ${talla}');
-  } else {
- cart.push('${nombre} - Talla Unica');
-  }
- Guardar();
-  abrirPanel();
-}
-
-función removeItem(i){cart.splice(i,1); Guardar();}
-
-función guardar(){
-  localStorage.setItem("cart",JSON.stringify(cart));
- actualización();
-}
-
-function update(){
-  lista.innerHTML="";
- emptyMsg.style.display = largo.cartucho === 0 ? "bloqueo" : "ninguno";
- enviar.style.display = largo.cartucho === 0 ? "ninguno" : "bloqueo";
-
-  cart.forEach((p,i)=>{
- lista.innerHTML+='<li><span>${p}</span><span class="remove" onclick="removeItem(${i})">&#10005; </espacio></li>';
-  });
-  count.textContent=cart.length;
-
- Let items = cart.map((p,i)=>'${i+1}. ${p}').join("\n");
- let txt = encodeURIComponent('Hola, quiero hacer el siguiente pedido:\n\n${items}\n\nGracias.');
- enviar.href='https://wa.me/5219381264237?text=${txt}';
-}
-actualización();
-
-/* ── ZOOM ── */
-función zoom(src){
-  modal.style.display="flex";
-  imgModal.src=src;
-}
-function cerrarModal(){modal.style.display="none";}
-modal.addEventListener("click",(e)=>{if(e.target===modal) cerrarModal();});
-document.addEventListener("keydown",(e)=>{if(e.key==="Escape"){cerrarModal(); cerrarPanel();}});
-</guion>
-
-</cuerpo>
+</body>
 </html>
