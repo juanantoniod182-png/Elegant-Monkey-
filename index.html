@@ -3,262 +3,543 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elegant Monkey Shop — Catálogo</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;background:#fff;font-family:'Montserrat';}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-/* HEADER */
+body{
+  background:#f8f7f4;
+  font-family:'Montserrat',sans-serif;
+  color:#222;
+}
+
+/* ── HEADER ── */
 header{
-background:#000;
-color:white;
-padding:35px 20px;
-display:flex;
-flex-direction:column;
-align-items:center;
+  background:linear-gradient(135deg,#0a0a0a 0%,#1a1a1a 100%);
+  color:white;
+  padding:40px 20px 30px;
+  text-align:center;
+  position:relative;
+}
+
+header::after{
+  content:"";
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:4px;
+  background:linear-gradient(90deg,transparent,#d4af37,transparent);
 }
 
 .logo{
-width:clamp(110px,14vw,170px);
-height:clamp(110px,14vw,170px);
-object-fit:cover;
-border-radius:50%;
-border:3px solid #d4af37;
-margin-bottom:15px;
+  width:clamp(100px,13vw,150px);
+  height:clamp(100px,13vw,150px);
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #d4af37;
+  box-shadow:0 0 30px rgba(212,175,55,0.3);
+  margin-bottom:16px;
 }
 
 h1{
-font-family:'Cinzel';
-color:#d4af37;
-font-size:clamp(20px,3vw,28px);
-letter-spacing:3px;
-text-align:center;
+  font-family:'Cinzel',serif;
+  color:#d4af37;
+  font-size:clamp(18px,3vw,28px);
+  letter-spacing:4px;
+  font-weight:700;
+  margin-bottom:6px;
 }
 
-/* SECCIONES */
-.section{
-text-align:center;
-font-family:'Cinzel';
-margin:40px 0 10px;
-font-size:18px;
+.tagline{
+  font-size:clamp(11px,1.6vw,14px);
+  color:rgba(255,255,255,0.6);
+  letter-spacing:6px;
+  text-transform:uppercase;
+  font-weight:300;
 }
 
-.section::after{
-content:"";
-width:90px;
-height:3px;
-background:#d4af37;
-display:block;
-margin:10px auto;
+/* ── CONTACT BAR ── */
+.contact-bar{
+  background:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  padding:12px 20px;
+  flex-wrap:wrap;
 }
 
-/* GRID */
+.contact-bar a{
+  color:#d4af37;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:500;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  transition:color .3s;
+}
+
+.contact-bar a:hover{
+  color:#f7e7a1;
+}
+
+/* ── SECTIONS ── */
+.section-header{
+  text-align:center;
+  padding:50px 20px 10px;
+}
+
+.section-header h2{
+  font-family:'Cinzel',serif;
+  font-size:clamp(18px,2.5vw,24px);
+  letter-spacing:3px;
+  color:#1a1a1a;
+  display:inline-block;
+  position:relative;
+  padding-bottom:12px;
+}
+
+.section-header h2::after{
+  content:"";
+  position:absolute;
+  bottom:0;left:50%;transform:translateX(-50%);
+  width:60px;height:3px;
+  background:linear-gradient(90deg,#d4af37,#f7e7a1);
+  border-radius:2px;
+}
+
+.section-header p{
+  font-size:13px;
+  color:#888;
+  margin-top:10px;
+  font-weight:300;
+}
+
+/* ── GRID ── */
 .container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-padding:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:24px;
+  padding:20px clamp(16px,4vw,60px);
+  max-width:1400px;
+  margin:0 auto;
 }
 
-/* CARD */
+/* ── CARD ── */
 .card{
-background:white;
-border-radius:14px;
-overflow:hidden;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-position:relative;
-transition:.3s;
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,0.06);
+  position:relative;
+  transition:transform .3s,box-shadow .3s;
 }
-.card:hover{transform:translateY(-5px);}
 
-/* SLIDER */
-.slider{position:relative;}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 35px rgba(0,0,0,0.12);
+}
+
+/* ── SLIDER ── */
+.slider{position:relative;overflow:hidden;background:#f0ede8;}
 
 .slider img{
-width:100%;
-height:260px;
-object-fit:cover;
-display:none;
-cursor:pointer;
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  display:none;
+  cursor:pointer;
+  transition:opacity .3s;
 }
 
 .slider img.active{display:block;}
 
 .btn-slider{
-position:absolute;
-top:50%;
-transform:translateY(-50%);
-background:rgba(0,0,0,0.6);
-color:white;
-border:none;
-padding:6px 12px;
-cursor:pointer;
-border-radius:6px;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(4px);
+  color:white;
+  border:none;
+  width:36px;height:36px;
+  cursor:pointer;
+  border-radius:50%;
+  font-size:18px;
+  transition:background .3s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
+.btn-slider:hover{background:rgba(212,175,55,0.8);}
 .prev{left:10px;}
 .next{right:10px;}
 
-/* ETIQUETAS */
+/* ── BADGES ── */
 .hot{
-position:absolute;
-top:10px;
-left:10px;
-background:linear-gradient(45deg,#d4af37,#f7e7a1);
-color:black;
-padding:5px 10px;
-font-size:11px;
-font-weight:bold;
-border-radius:8px;
+  position:absolute;
+  top:12px;left:12px;
+  background:linear-gradient(135deg,#d4af37,#f7e7a1);
+  color:#1a1a1a;
+  padding:5px 14px;
+  font-size:11px;
+  font-weight:600;
+  border-radius:20px;
+  letter-spacing:1px;
+  z-index:2;
+  box-shadow:0 2px 8px rgba(212,175,55,0.4);
 }
 
 .stock{
-font-size:12px;
-color:#d4af37;
-margin-top:5px;
+  font-size:11px;
+  color:#d4af37;
+  margin-top:6px;
+  font-weight:500;
+  letter-spacing:0.5px;
 }
 
-/* INFO */
-.info{text-align:center;padding:15px;}
-.title{font-family:'Cinzel';font-size:15px;}
-.price{color:#c9a646;font-weight:bold;font-size:16px;}
-.tallas{font-size:13px;color:#555;margin-top:5px;}
+/* ── INFO ── */
+.info{
+  padding:18px 20px 20px;
+  text-align:center;
+}
 
+.brand{
+  font-size:11px;
+  color:#999;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:500;
+  margin-bottom:4px;
+}
+
+.title{
+  font-family:'Cinzel',serif;
+  font-size:15px;
+  font-weight:600;
+  color:#1a1a1a;
+  margin-bottom:8px;
+}
+
+.price{
+  color:#d4af37;
+  font-weight:600;
+  font-size:20px;
+  margin-bottom:12px;
+}
+
+/* ── SIZE SELECTOR ── */
+.size-selector{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:14px;
+  flex-wrap:wrap;
+}
+
+.size-btn{
+  width:38px;height:38px;
+  border:2px solid #ddd;
+  background:white;
+  border-radius:8px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .2s;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#555;
+}
+
+.size-btn:hover{
+  border-color:#d4af37;
+  color:#d4af37;
+}
+
+.size-btn.selected{
+  background:#1a1a1a;
+  color:white;
+  border-color:#1a1a1a;
+}
+
+.multitalla-tag{
+  display:inline-block;
+  background:#f0ede8;
+  color:#888;
+  padding:6px 16px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:1px;
+  margin-bottom:14px;
+}
+
+/* ── ADD BUTTON ── */
 .btn{
-background:#000;
-color:white;
-padding:10px;
-border-radius:6px;
-cursor:pointer;
-margin-top:10px;
-transition:.3s;
+  background:#1a1a1a;
+  color:white;
+  padding:12px 24px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:500;
+  letter-spacing:1px;
+  transition:all .3s;
+  border:none;
+  display:inline-block;
 }
+
 .btn:hover{
-background:#d4af37;
-color:black;
+  background:#d4af37;
+  color:#1a1a1a;
 }
 
-/* 🛒 ICONO */
-.cart{
-position:fixed;
-right:20px;
-top:20px;
-background:#000;
-color:white;
-padding:14px;
-border-radius:50%;
-cursor:pointer;
-z-index:1000;
-box-shadow:0 5px 15px rgba(0,0,0,0.2);
+/* ── CART ICON ── */
+.cart-icon{
+  position:fixed;
+  right:20px;
+  top:20px;
+  background:#1a1a1a;
+  color:white;
+  width:52px;height:52px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:1001;
+  box-shadow:0 4px 15px rgba(0,0,0,0.3);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  transition:background .3s;
+  border:none;
 }
 
-/* 🔥 NUEVO CARRITO ELEGANTE */
+.cart-icon:hover{background:#d4af37;}
+
+.cart-badge{
+  position:absolute;
+  top:-4px;right:-4px;
+  background:#d4af37;
+  color:#1a1a1a;
+  font-size:11px;
+  font-weight:700;
+  width:22px;height:22px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ── PANEL CARRITO ── */
 .panel{
-position:fixed;
-right:-350px;
-top:20px;
-width:300px;
-max-height:85vh;
-background:white;
-border-radius:20px;
-box-shadow:0 20px 50px rgba(0,0,0,0.25);
-padding:20px;
-transition:.4s cubic-bezier(.77,0,.18,1);
-z-index:1000;
-display:flex;
-flex-direction:column;
+  position:fixed;
+  right:-380px;
+  top:0;
+  width:360px;
+  height:100vh;
+  background:white;
+  box-shadow:-10px 0 40px rgba(0,0,0,0.15);
+  padding:30px 24px 24px;
+  transition:right .4s cubic-bezier(.77,0,.18,1);
+  z-index:1002;
+  display:flex;
+  flex-direction:column;
 }
 
-.panel.active{right:20px;}
+.panel.active{right:0;}
 
 .panel h3{
-margin-top:0;
-font-family:'Cinzel';
-color:#d4af37;
+  font-family:'Cinzel',serif;
+  color:#d4af37;
+  font-size:18px;
+  letter-spacing:2px;
+  margin-bottom:20px;
 }
 
-/* lista scroll */
 #lista{
-overflow-y:auto;
-max-height:300px;
-padding:0;
+  overflow-y:auto;
+  flex:1;
+  padding:0;
+  list-style:none;
 }
 
-/* items */
 #lista li{
-list-style:none;
-padding:8px 0;
-border-bottom:1px solid #eee;
-font-size:14px;
+  padding:12px 0;
+  border-bottom:1px solid #f0f0f0;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-/* eliminar */
 .remove{
-color:red;
-cursor:pointer;
-margin-left:8px;
+  color:#ccc;
+  cursor:pointer;
+  font-size:16px;
+  transition:color .3s;
+  flex-shrink:0;
+  margin-left:10px;
 }
 
-/* cerrar */
-.close{
-position:absolute;
-top:10px;
-right:15px;
-font-size:22px;
-cursor:pointer;
+.remove:hover{color:#e74c3c;}
+
+.close-panel{
+  position:absolute;
+  top:20px;right:20px;
+  font-size:24px;
+  cursor:pointer;
+  color:#999;
+  transition:color .3s;
+  background:none;
+  border:none;
 }
 
-/* boton enviar */
+.close-panel:hover{color:#222;}
+
 #enviar{
-margin-top:auto;
-background:#25D366;
-padding:12px;
-text-align:center;
-border-radius:10px;
-text-decoration:none;
-color:white;
-font-weight:bold;
+  margin-top:16px;
+  background:#25D366;
+  padding:14px;
+  text-align:center;
+  border-radius:12px;
+  text-decoration:none;
+  color:white;
+  font-weight:600;
+  font-size:14px;
+  letter-spacing:1px;
+  transition:background .3s;
+  display:block;
 }
 
-/* MODAL ZOOM */
+#enviar:hover{background:#1da851;}
+
+.empty-cart{
+  text-align:center;
+  color:#ccc;
+  font-size:13px;
+  padding:40px 0;
+}
+
+/* ── OVERLAY ── */
+.overlay{
+  display:none;
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.4);
+  z-index:1001;
+}
+
+.overlay.active{display:block;}
+
+/* ── MODAL ZOOM ── */
 .modal{
-display:none;
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.85);
-justify-content:center;
-align-items:center;
-z-index:999;
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:2000;
 }
 
 .modal img{
-max-width:90%;
-max-height:85%;
-border-radius:10px;
+  max-width:92%;
+  max-height:88%;
+  border-radius:12px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
 }
 
 .closeModal{
-position:absolute;
-top:20px;
-right:30px;
-color:white;
-font-size:30px;
-cursor:pointer;
+  position:absolute;
+  top:20px;right:30px;
+  color:white;
+  font-size:32px;
+  cursor:pointer;
+  background:none;border:none;
+  transition:color .3s;
 }
 
-/* WHATS */
-.wsp{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#25D366;
-padding:14px;
-border-radius:50%;
-color:white;
+.closeModal:hover{color:#d4af37;}
+
+/* ── FLOATING BUTTONS ── */
+.float-btns{
+  position:fixed;
+  bottom:24px;
+  left:24px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:1000;
+}
+
+.float-btn{
+  width:54px;height:54px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  text-decoration:none;
+  color:white;
+  box-shadow:0 4px 15px rgba(0,0,0,0.25);
+  transition:transform .3s,box-shadow .3s;
+}
+
+.float-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 20px rgba(0,0,0,0.35);
+}
+
+.float-wsp{background:#25D366;}
+.float-call{background:#1a1a1a;}
+
+/* ── FOOTER ── */
+footer{
+  background:#0a0a0a;
+  color:rgba(255,255,255,0.5);
+  text-align:center;
+  padding:30px 20px;
+  margin-top:60px;
+  font-size:12px;
+  letter-spacing:1px;
+}
+
+footer .footer-brand{
+  font-family:'Cinzel',serif;
+  color:#d4af37;
+  font-size:16px;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+
+footer a{
+  color:#d4af37;
+  text-decoration:none;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .container{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    padding:12px;
+  }
+  .slider img{height:200px;}
+  .info{padding:12px 10px 14px;}
+  .title{font-size:13px;}
+  .price{font-size:16px;margin-bottom:8px;}
+  .size-btn{width:32px;height:32px;font-size:11px;}
+  .btn{padding:10px 16px;font-size:12px;}
+  .brand{font-size:10px;}
+  .panel{width:100%;right:-100%;}
+  .contact-bar{gap:16px;}
+  .contact-bar a{font-size:12px;}
 }
 </style>
 </head>
@@ -266,128 +547,257 @@ color:white;
 <body>
 
 <header>
-<img src="logo.webp" class="logo">
-<h1>ELEGANT MONKEY SHOP<br>CATÁLOGO DE ROPA</h1>
+  <img src="logo.webp" class="logo" alt="Elegant Monkey Shop">
+  <h1>ELEGANT MONKEY SHOP</h1>
+  <div class="tagline">Catálogo Premium de Ropa</div>
 </header>
 
-<div class="section">PLAYERAS</div>
+<div class="contact-bar">
+  <a href="tel:+529381264237">📞 938 126 4237</a>
+  <a href="https://wa.me/5219381264237" target="_blank">💬 WhatsApp</a>
+</div>
+
+<!-- PLAYERAS -->
+<div class="section-header">
+  <h2>PLAYERAS</h2>
+  <p>Colección de marcas premium</p>
+</div>
 <div class="container" id="playeras"></div>
 
-<div class="section">PLAYERAS DE PEDRERIA</div>
+<!-- PEDRERÍA -->
+<div class="section-header">
+  <h2>PLAYERAS DE PEDRERÍA</h2>
+  <p>Diseños exclusivos con pedrería</p>
+</div>
 <div class="container" id="pedreria"></div>
 
-<div class="section">SHORTS</div>
+<!-- SHORTS -->
+<div class="section-header">
+  <h2>SHORTS</h2>
+  <p>Estilo y comodidad</p>
+</div>
 <div class="container" id="shorts"></div>
 
-<div class="cart" onclick="abrir()">🛒 <span id="count">0</span></div>
+<!-- GORRAS -->
+<div class="section-header">
+  <h2>GORRAS</h2>
+  <p>Accesorios multitalla</p>
+</div>
+<div class="container" id="gorras"></div>
 
+<!-- CART ICON -->
+<button class="cart-icon" onclick="abrirPanel()">
+  🛒
+  <span class="cart-badge" id="count">0</span>
+</button>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="cerrarPanel()"></div>
+
+<!-- PANEL CARRITO -->
 <div class="panel" id="panel">
-<div class="close" onclick="cerrar()">✖</div>
-<h3>Tu pedido</h3>
-<ul id="lista"></ul>
-<a id="enviar" target="_blank">Enviar pedido</a>
+  <button class="close-panel" onclick="cerrarPanel()">✕</button>
+  <h3>Tu Pedido</h3>
+  <ul id="lista"></ul>
+  <div class="empty-cart" id="emptyMsg">Tu carrito está vacío</div>
+  <a id="enviar" target="_blank">📲 Enviar pedido por WhatsApp</a>
 </div>
 
-<a href="https://wa.me/5219381264237" class="wsp">💬</a>
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <a href="https://wa.me/5219381264237" class="float-btn float-wsp" target="_blank" title="WhatsApp">💬</a>
+  <a href="tel:+529381264237" class="float-btn float-call" title="Llamar">📞</a>
+</div>
 
+<!-- MODAL ZOOM -->
 <div class="modal" id="modal">
-<span class="closeModal" onclick="cerrarModal()">✖</span>
-<img id="imgModal">
+  <button class="closeModal" onclick="cerrarModal()">✕</button>
+  <img id="imgModal" alt="Zoom">
 </div>
+
+<footer>
+  <div class="footer-brand">ELEGANT MONKEY SHOP</div>
+  <p>📞 <a href="tel:+529381264237">938 126 4237</a> &nbsp;|&nbsp; 💬 <a href="https://wa.me/5219381264237" target="_blank">WhatsApp</a></p>
+  <p style="margin-top:8px;">© 2026 Elegant Monkey Shop. Todos los derechos reservados.</p>
+</footer>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-/* DETECTOR */
-function detectarImagenes(prefijo,max=15){
-return new Promise(resolve=>{
-let imgs=[]; let cargadas=0;
-for(let i=1;i<=max;i++){
-let img=new Image();
-img.src=`${prefijo}_${i}.webp`;
-img.onload=()=>{imgs.push(img.src);check();}
-img.onerror=()=>{check();}
-function check(){cargadas++; if(cargadas===max) resolve(imgs);}
+/* ── BRAND NAMES ── */
+const marcasPlayeras = [
+  "Hugo Boss","Versace","Armani Exchange","Dolce & Gabbana","Kenzo",
+  "Philipp Plein","Givenchy","Burberry","Balenciaga","Fendi",
+  "Gucci","Prada","Moschino","Calvin Klein","Tommy Hilfiger",
+  "Ralph Lauren","Lacoste","Diesel","Valentino","Balmain",
+  "Off-White","Alexander McQueen","Stone Island","Moncler","Palm Angels"
+];
+
+const marcasPedreria = [
+  "Philipp Plein","Dolce & Gabbana","Versace","Balmain","Givenchy",
+  "Moschino","Kenzo","Valentino","Alexander McQueen","Roberto Cavalli",
+  "Swarovski Edition","Crystal Collection","Luxury Stone","Diamond Cut","Gold Thread",
+  "Platinum Series","Royal Edition","Crown Jewel","Star Crystal","Emerald Line",
+  "Pearl Drop","Ruby Set","Sapphire Touch","Onyx Edition","Amethyst Line"
+];
+
+const marcasShorts = [
+  "Hugo Boss","Versace","Armani Exchange","Dolce & Gabbana","Kenzo",
+  "Philipp Plein","Givenchy","Burberry","Balenciaga","Fendi",
+  "Gucci","Prada","Moschino","Calvin Klein","Tommy Hilfiger",
+  "Ralph Lauren","Lacoste","Diesel","Valentino","Balmain",
+  "Off-White","Alexander McQueen","Stone Island","Moncler","Palm Angels"
+];
+
+const marcasGorras = [
+  "Gucci","Louis Vuitton","Balenciaga","Versace","Burberry",
+  "Prada","Fendi","Givenchy","Kenzo","Armani Exchange",
+  "Ralph Lauren","Tommy Hilfiger","Calvin Klein","Hugo Boss","Lacoste",
+  "Nike","Adidas","New Era","Philipp Plein","Moschino",
+  "Valentino","Diesel","Stone Island","Off-White","Palm Angels"
+];
+
+/* ── DETECT IMAGES ── */
+function detectarImagenes(prefijo, max=15){
+  return new Promise(resolve=>{
+    let imgs=[], cargadas=0;
+    for(let i=1;i<=max;i++){
+      let img=new Image();
+      img.src=`${prefijo}_${i}.webp`;
+      img.onload=()=>{imgs.push(img.src);check();};
+      img.onerror=()=>{check();};
+      function check(){cargadas++;if(cargadas===max)resolve(imgs);}
+    }
+  });
 }
-});
+
+/* ── CREATE CARD ── */
+async function crear(marca, tipo, precio, prefijo, cont, i, conTalla=true){
+  let imgs=await detectarImagenes(prefijo);
+  if(imgs.length===0)return;
+
+  const nombre = `${tipo} ${marca}`;
+  const hot = i<=3 ? '<div class="hot">🔥 HOT</div>' : '';
+  const stock = i<=4 ? '<div class="stock">⚡ Pocas piezas disponibles</div>' : '';
+
+  const imagesHTML = imgs.map((img,index)=>
+    `<img src="${img}" class="${index===0?'active':''}" onclick="zoom('${img}')" alt="${nombre}">`
+  ).join("");
+
+  const cardId = `card-${cont}-${i}`;
+
+  let tallaHTML;
+  if(conTalla){
+    tallaHTML = `
+      <div class="size-selector" id="sizes-${cardId}">
+        <button class="size-btn" onclick="selTalla(this,'${cardId}')">S</button>
+        <button class="size-btn" onclick="selTalla(this,'${cardId}')">M</button>
+        <button class="size-btn" onclick="selTalla(this,'${cardId}')">L</button>
+        <button class="size-btn" onclick="selTalla(this,'${cardId}')">XL</button>
+      </div>`;
+  } else {
+    tallaHTML = `<div class="multitalla-tag">Multitalla</div>`;
+  }
+
+  document.getElementById(cont).innerHTML+=`
+  <div class="card" id="${cardId}">
+    ${hot}
+    <div class="slider">
+      ${imagesHTML}
+      <button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
+      <button class="btn-slider next" onclick="moveSlide(this,1)">›</button>
+    </div>
+    <div class="info">
+      <div class="brand">${marca}</div>
+      <div class="title">${tipo}</div>
+      <div class="price">$${precio} MXN</div>
+      ${tallaHTML}
+      ${stock}
+      <button class="btn" onclick="add('${nombre.replace(/'/g,"\\'")}','${cardId}',${conTalla})">Agregar al pedido</button>
+    </div>
+  </div>`;
 }
 
-/* CREAR */
-async function crear(nombre,precio,prefijo,cont,i){
-let imgs=await detectarImagenes(prefijo);
-if(imgs.length===0) return;
+/* ── GENERATE PRODUCTS ── */
+for(let i=1;i<=25;i++) crear(marcasPlayeras[i-1]||"Premium","Playera",420,`p${i}`,"playeras",i,true);
+for(let i=1;i<=25;i++) crear(marcasPedreria[i-1]||"Exclusive","Playera Pedrería",420,`pd${i}`,"pedreria",i,true);
+for(let i=1;i<=25;i++) crear(marcasShorts[i-1]||"Premium","Short",480,`s${i}`,"shorts",i,true);
+for(let i=1;i<=25;i++) crear(marcasGorras[i-1]||"Premium","Gorra",350,`g${i}`,"gorras",i,false);
 
-let hot = i<=3 ? '<div class="hot">HOT</div>' : '';
-let stock = i<=4 ? '<div class="stock">POCAS PIEZAS</div>' : '';
-
-let imagesHTML = imgs.map((img,index)=>
-`<img src="${img}" class="${index==0?'active':''}" onclick="zoom('${img}')">`
-).join("");
-
-document.getElementById(cont).innerHTML+=`
-<div class="card">
-${hot}
-<div class="slider">
-${imagesHTML}
-<button class="btn-slider prev" onclick="moveSlide(this,-1)">‹</button>
-<button class="btn-slider next" onclick="moveSlide(this,1)">›</button>
-</div>
-<div class="info">
-<div class="title">${nombre}</div>
-<div class="price">$${precio}</div>
-<div class="tallas">Tallas: S, M, L, XL</div>
-${stock}
-<div class="btn" onclick="add('${nombre}')">Agregar</div>
-</div>
-</div>`;
+/* ── SIZE SELECTOR ── */
+function selTalla(btn, cardId){
+  const container = btn.parentElement;
+  container.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
 }
 
-/* GENERAR */
-for(let i=1;i<=25;i++) crear("Playera Modelo "+i,420,`p${i}`,"playeras",i);
-for(let i=1;i<=25;i++) crear("Pedreria "+i,420,`pd${i}`,"pedreria",i);
-for(let i=1;i<=25;i++) crear("Short "+i,480,`s${i}`,"shorts",i);
-
-/* SLIDER */
+/* ── SLIDER ── */
 function moveSlide(btn,dir){
-const slider=btn.parentElement;
-const images=slider.querySelectorAll("img");
-let index=[...images].findIndex(img=>img.classList.contains("active"));
-images[index].classList.remove("active");
-index=(index+dir+images.length)%images.length;
-images[index].classList.add("active");
+  const slider=btn.parentElement;
+  const images=slider.querySelectorAll("img");
+  let index=[...images].findIndex(img=>img.classList.contains("active"));
+  images[index].classList.remove("active");
+  index=(index+dir+images.length)%images.length;
+  images[index].classList.add("active");
 }
 
-/* CARRITO */
-function abrir(){panel.classList.add("active");}
-function cerrar(){panel.classList.remove("active");}
+/* ── CART ── */
+function abrirPanel(){
+  panel.classList.add("active");
+  overlay.classList.add("active");
+}
+function cerrarPanel(){
+  panel.classList.remove("active");
+  overlay.classList.remove("active");
+}
 
-function add(n){cart.push(n);guardar();}
-function remove(i){cart.splice(i,1);guardar();}
+function add(nombre, cardId, conTalla){
+  if(conTalla){
+    const sel = document.querySelector(`#sizes-${cardId} .size-btn.selected`);
+    if(!sel){
+      alert("Por favor selecciona una talla antes de agregar.");
+      return;
+    }
+    const talla = sel.textContent;
+    cart.push(`${nombre} - Talla ${talla}`);
+  } else {
+    cart.push(`${nombre} - Multitalla`);
+  }
+  guardar();
+  abrirPanel();
+}
+
+function removeItem(i){cart.splice(i,1);guardar();}
 
 function guardar(){
-localStorage.setItem("cart",JSON.stringify(cart));
-update();
+  localStorage.setItem("cart",JSON.stringify(cart));
+  update();
 }
 
 function update(){
-lista.innerHTML="";
-cart.forEach((p,i)=>{
-lista.innerHTML+=`<li>${p} <span class="remove" onclick="remove(${i})">✖</span></li>`;
-});
-count.textContent=cart.length;
+  lista.innerHTML="";
+  emptyMsg.style.display = cart.length === 0 ? "block" : "none";
+  enviar.style.display = cart.length === 0 ? "none" : "block";
 
-let txt=encodeURIComponent("Hola quiero este pedido: "+cart.join(", "));
-enviar.href=`https://wa.me/5219381264237?text=${txt}`;
+  cart.forEach((p,i)=>{
+    lista.innerHTML+=`<li><span>${p}</span><span class="remove" onclick="removeItem(${i})">✕</span></li>`;
+  });
+  count.textContent=cart.length;
+
+  let items = cart.map((p,i)=>`${i+1}. ${p}`).join("\n");
+  let txt = encodeURIComponent(`Hola, quiero hacer el siguiente pedido:\n\n${items}\n\nGracias.`);
+  enviar.href=`https://wa.me/5219381264237?text=${txt}`;
 }
 update();
 
-/* ZOOM */
+/* ── ZOOM ── */
 function zoom(src){
-modal.style.display="flex";
-imgModal.src=src;
+  modal.style.display="flex";
+  imgModal.src=src;
 }
 function cerrarModal(){modal.style.display="none";}
 modal.addEventListener("click",(e)=>{if(e.target===modal) cerrarModal();});
+document.addEventListener("keydown",(e)=>{if(e.key==="Escape"){cerrarModal();cerrarPanel();}});
 </script>
 
 </body>
