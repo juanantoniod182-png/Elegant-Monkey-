@@ -1059,8 +1059,7 @@ async function generarCatalogo(){
     {tipo:"Playera", precio:420, prefijo:"p", cont:"playeras", max:50, conTalla:true},
     {tipo:"Playera de Pedreria", precio:420, prefijo:"pd", cont:"pedreria", max:50, conTalla:true},
     {tipo:"Short", precio:480, prefijo:"s", cont:"shorts", max:50, conTalla:true},
-    {tipo:"Gorra", precio:590, prefijo:"g", cont:"gorras", max:50, conTalla:false}
-  ];
+    
 
   for(const sec of secciones){
     for(let i=1;i<=sec.max;i++){
@@ -1100,18 +1099,7 @@ function cerrarPanel(){
   overlay.classList.remove("active");
 }
 
-function add(nombre, cardId, conTalla){
-  if(conTalla){
-    const sel = document.querySelector(`#sizes-${cardId} .size-btn.selected`);
-    if(!sel){
-      alert("Por favor selecciona una talla antes de agregar.");
-      return;
-    }
-    const talla = sel.textContent;
-    cart.push(`${nombre} - Talla ${talla}`);
-  } else {
-    cart.push(`${nombre} - Talla Unica`);
-  }
+
   guardar();
   abrirPanel();
 }
